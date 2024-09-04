@@ -1,0 +1,164 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             String          @id @default(cuid())
+  numericId      Int             @default(autoincrement())
+  name           String?
+  email          String          @unique
+  emailVerified  DateTime?
+  image          String?
+  accounts       Account[]
+  sessions       Session[]
+  Authenticator  Authenticator[]
+  squadId        String?
+  squad          Squad?          @relation(fields: [squadId], references: [id])
+  ownedSquads    Squad[]         @relation("ownedSquads")
+  score          Int             @default(0)
+  prs            String          @default("[]")
+  handle         String?
+  profilePicture String?
+  banned         Boolean         @default(false)
+  color          Int             @default(1)
+  isMod          Boolean         @default(false)
+
+  inviteId String?
+  invited  User?   @relation("invite", fields: [inviteId], references: [id])
+  inviter  User[]  @relation("invite")
+
+  bonuses   Bonuses[]
+  messages  SquadMessages[]
+  createdAt DateTime        @default(now())
+  updatedAt DateTime        @updatedAt
+}
+
+model Bonuses {
+  id         String   @id @default(cuid())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  identifier String
+  score      Int
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([userId])
+  @@index([identifier])
+}
+
+model SquadMessages {
+  id        String   @id @default(cuid())
+  squadId   String
+  squad     Squad    @relation(fields: [squadId], references: [id])
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  message   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([squadId])
+  @@index([userId])
+  @@index([createdAt])
+}
+
+model Repository {
+  id        String  @id @default(cuid())
+  nameOwner String
+  allowed   Boolean @default(false)
+
+  @@index([nameOwner])
+  @@index([allowed])
+}
+
+model Account {
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  banned    Boolean  @default(false)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([provider, providerAccountId])
+}
+
+model Session {
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model VerificationToken {
+  identifier String
+  token      String
+  expires    DateTime
+
+  @@id([identifier, token])
+}
+
+// Optional for WebAuthn support
+model Authenticator {
+  credentialID         String  @unique
+  userId               String
+  providerAccountId    String
+  credentialPublicKey  String
+  counter              Int
+  credentialDeviceType String
+  credentialBackedUp   Boolean
+  transports           String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([userId, credentialID])
+}
+
+model Squad {
+  id                String          @id @default(cuid())
+  name              String
+  allowOthersToJoin Boolean
+  ownerId           String
+  owner             User            @relation(fields: [ownerId], references: [id], "ownedSquads")
+  score             Int             @default(0)
+  members           User[]
+  messages          SquadMessages[]
+  banned            Boolean         @default(false)
+  createdAt         DateTime        @default(now())
+  updatedAt         DateTime        @updatedAt
+
+  @@index([score])
+}
+
+model Repositories {
+  id        String  @id @default(cuid())
+  nameOwner String
+  allowed   Boolean @default(false)
+
+  @@unique([nameOwner])
+  @@index([nameOwner])
+  @@index([allowed])
+}

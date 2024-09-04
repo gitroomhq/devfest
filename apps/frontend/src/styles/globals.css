@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-rgb: 0, 8, 8;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+}
+
+section {
+  @apply max-w-[1400px] mx-auto w-full px-[20px] py-[60px] md:py-[100px] flex-1 flex flex-col items-center gap-[40px] md:gap-[60px];
+}
+
+h1 {
+  @apply text-[90px] leading-[72px] md:text-[150px] lg:text-[200px] md:leading-[160px] font-bebas tracking-tighter;
+}
+
+h2 {
+  @apply text-[60px] md:text-[110px] leading-[48px] md:leading-[88px] font-bebas tracking-tighter text-center;
+}
+
+h4 {
+  @apply text-[20px] leading-[24.2px] md:text-[24px] md:leading-[30px] font-semibold;
+}
+
+h5 {
+  @apply text-[16px] leading-[19.2px] md:text-[20px] md:leading-[24px];
+}
+
+h6 {
+  @apply text-[12px] leading-[14.52px] md:text-[16px] md:leading-[19.36px] text-[#DEDEDE] opacity-70 uppercase;
+}
+
+#loom-companion-mv3 {
+  display: none;
+}
+
+.scrollbar::-webkit-scrollbar {
+  width: 1rem;
+  height: 0.8rem;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgb(50, 50, 50);
+  border: 3px solid transparent;
+  border-radius: 9px;
+  background-clip: content-box;
+}
+
+.shadow-primary {
+  box-shadow: 0 12px 44px rgba(251, 255, 20, 0.15),
+    0 -12px 44px rgba(255, 251, 221, 0.15);
+}
+
+.shadow-primary:hover {
+  box-shadow: 0 12px 60px rgba(251, 255, 20, 0.4),
+    0 -12px 60px rgba(255, 255, 221, 0.3);
+}
+
+.shadow-tertiary {
+  box-shadow: 12px 12px 44px rgba(255, 255, 255, 0.15),
+    -12px -12px 44px rgba(255, 255, 255, 0.15);
+}
+
+.shadow-tertiary:hover {
+  box-shadow: 12px 12px 44px rgba(118, 89, 216, 0.2),
+    -12px -12px 44px rgba(118, 89, 216, 0.05);
+}
+
+.wrapinv:not(:hover) .inv:before {
+  content: "Invite people to your squad";
+}
+
+.wrapinv:hover .inv:before {
+  content: "Copy invite link to clipboard";
+}
