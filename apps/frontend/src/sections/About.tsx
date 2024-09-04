@@ -9,9 +9,7 @@ const About = () => {
           members
         </span>
         , and win awesome <span className="text-yellow">Swag</span> from our
-        sponsors.
-        <br />
-        Get your GitHub ready!
+        sponsors. Get your GitHub ready!
       </div>
     </section>
   );
