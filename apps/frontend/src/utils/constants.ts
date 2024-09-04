@@ -351,12 +351,23 @@ export const FAQ_ITEMS = [
 
 export const FOOTER_MENU = [
   {
-    title: "Sponsors",
+    title: "Gold Sponsors",
     items: [
       { name: "Llmware", path: "https://llmware.ai/" },
-      { name: "Copoilotkit", path: "https://www.copilotkit.ai/" },
-      { name: "Traceloop", path: "https://www.traceloop.com/" },
-      { name: "Keephq", path: "https://www.keephq.dev/" },
+      { name: "Copoilotkit", path: "https://copilotkit.ai/" },
+      { name: "Traceloop", path: "https://traceloop.com/" },
+      { name: "Keephq", path: "https://keephq.dev/" },
+      { name: "Julep", path: "https://julep.ai/" },
+    ],
+  },
+  {
+    title: "Silver Sponsors",
+    items: [
+      { name: "Taipy", path: "https://taipy.io/" },
+      { name: "Digger.dev", path: "https://digger.dev" },
+      { name: "Composio", path: "https://composio.dev" },
+      { name: "Classiq", path: "https://classiq.io" },
+      { name: "ToolJet", path: "https://tooljet.io" },
     ],
   },
   {
