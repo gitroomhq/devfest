@@ -5,7 +5,7 @@ const contactOptions = [
     icon: "/icons/twitter.svg",
     title: "X",
     description: "We’d love to stay connect with you.",
-    link: "https://x.com/hackaico",
+    link: "https://x.com/devfestai",
     className: "bg-gradTopLeft",
     cta: "Follow us",
   },

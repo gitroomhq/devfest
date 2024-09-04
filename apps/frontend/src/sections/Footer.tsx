@@ -72,7 +72,7 @@ const Footer = () => {
           <Link href="https://discord.gg/raSVgQP9vx" target="_blank">
             <IconButton icon="discord" />
           </Link>
-          <Link href="https://x.com/hackaico" target="_blank">
+          <Link href="https://x.com/devfestai" target="_blank">
             <IconButton icon="twitter" />
           </Link>
         </div>

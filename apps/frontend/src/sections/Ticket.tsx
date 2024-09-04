@@ -87,7 +87,7 @@ const Ticket: FC<{
   const handleTwitterShare = useCallback((event: any) => {
     const link = `https://x.com/intent/tweet${objectToGetParams({
       url: "https://devfest.ai/ticket/" + user.handle,
-      text: "I am participating in HackFest AI 2024, share your card and win awesome swag! @hackaico @CopilotKit @llmware @keepalerting @traceloopdev",
+      text: "I am participating in HackFest AI 2024, share your card and win awesome swag! @devfestai @CopilotKit @llmware @keepalerting @traceloopdev @julep_ai",
     })}`;
 
     const windowConfig = {
