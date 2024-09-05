@@ -1,29 +1,32 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import { FC, useCallback, useEffect, useState } from "react";
+import Image from 'next/image';
+import { FC, useCallback, useEffect, useState } from 'react';
 
-import { Button, ColorButton } from "@frontend/components/button";
-import GithubSvg from "@frontend/components/svgs/GithubSvg";
-import { TICKETS } from "@frontend/utils/constants";
-import clsx from "clsx";
-import { signIn, useSession } from "next-auth/react";
-import { tree } from "next/dist/build/templates/app-page";
-import { useRouter } from "next/router";
+import { Button, ColorButton } from '@frontend/components/button';
+import GithubSvg from '@frontend/components/svgs/GithubSvg';
+import { TICKETS } from '@frontend/utils/constants';
+import clsx from 'clsx';
+import { signIn, useSession } from 'next-auth/react';
+import { tree } from 'next/dist/build/templates/app-page';
+import { useRouter } from 'next/router';
 
 export const BUTTON_COLORS = [
-  "from-[#FF8D68] to-[#FF6F41]",
-  "from-[#65FFC7] to-[#10EE9E]",
-  "from-[#FF8097] to-[#FF485E]",
-  "from-[#81F7FF] to-[#32F3FF]",
-  "from-[#FFEC87] to-[#FFDE2E]",
-  "from-[#8FB5FF] to-[#5690FF]",
+  'from-[#FF8D68] to-[#FF6F41]',
+  'from-[#65FFC7] to-[#10EE9E]',
+  'from-[#FF8097] to-[#FF485E]',
+  'from-[#81F7FF] to-[#32F3FF]',
+  'from-[#FFEC87] to-[#FFDE2E]',
+  'from-[#8FB5FF] to-[#5690FF]',
 ];
 
 const objectToGetParams = (object: any) => {
   const params = Object.entries(object)
     .filter(([, value]) => value !== undefined && value !== null)
-    .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(String(value))}`);
+    .map(
+      ([key, value]) =>
+        `${encodeURIComponent(key)}=${encodeURIComponent(String(value))}`
+    );
 
   return params.length > 0 ? `?${params.join('&')}` : '';
 };
@@ -43,24 +46,24 @@ const windowOpen = (url: string, { width, height, ...configRest }: any) => {
   const config = {
     width,
     height,
-    location: "no",
-    toolbar: "no",
-    status: "no",
-    directories: "no",
-    menubar: "no",
-    scrollbars: "yes",
-    resizable: "no",
-    centerscreen: "yes",
-    chrome: "yes",
+    location: 'no',
+    toolbar: 'no',
+    status: 'no',
+    directories: 'no',
+    menubar: 'no',
+    scrollbars: 'yes',
+    resizable: 'no',
+    centerscreen: 'yes',
+    chrome: 'yes',
     ...configRest,
   };
 
   return window.open(
     url,
-    "",
+    '',
     Object.keys(config)
       .map((key) => `${key}=${config[key]}`)
-      .join(", "),
+      .join(', ')
   );
 };
 
@@ -73,7 +76,7 @@ const Ticket: FC<{
   const session = useSession();
   useEffect(() => {
     if (
-      session.status === "authenticated" &&
+      session.status === 'authenticated' &&
       // @ts-ignore
       session.data?.user?.numericId === user.numericId
     ) {
@@ -86,8 +89,8 @@ const Ticket: FC<{
 
   const handleTwitterShare = useCallback((event: any) => {
     const link = `https://x.com/intent/tweet${objectToGetParams({
-      url: "https://devfest.ai/ticket/" + user.handle,
-      text: "I am participating in HackFest AI 2024, share your card and win awesome swag! @devfestai @CopilotKit @llmware @keepalerting @traceloopdev @julep_ai",
+      url: 'https://devfest.ai/ticket/' + user.handle,
+      text: 'I am participating in HackFest AI 2024, share your card and win awesome swag! @devfestai @CopilotKit @llmware @keepalerting @traceloopdev @julep_ai',
     })}`;
 
     const windowConfig = {
@@ -106,7 +109,7 @@ const Ticket: FC<{
       <div className="flex flex-col items-center gap-6">
         <h6>[ Ticket ]</h6>
         <h2 className="max-w-[926px]">
-          Share your Ticket and win{" "}
+          Share your Ticket and win{' '}
           <span className="text-purple">Awesome Swag </span>
         </h2>
         <h5 className="max-w-[700px] text-center">
@@ -122,22 +125,24 @@ const Ticket: FC<{
             <Button
               icon="arrow-up-right"
               onClick={() =>
-                session.status === "authenticated"
+                session.status === 'authenticated'
                   ? // @ts-ignore
                     router.push(`/dashboard/ticket`)
-                  : signIn("github", {
-                      callbackUrl: "/dashboard/ticket",
+                  : signIn('github', {
+                      callbackUrl: '/dashboard/ticket',
                       redirect: true,
                     })
               }
             >
-              {session.status === "authenticated"
-                ? "Manage your ticket"
-                : "Create your ticket"}
+              {session.status === 'authenticated'
+                ? 'Manage your ticket'
+                : 'Create your ticket'}
             </Button>
           )}
-          {session.status === "authenticated" && (
-            <Button icon="x" onClick={handleTwitterShare}>Share Ticket on</Button>
+          {session.status === 'authenticated' && (
+            <Button icon="x" onClick={handleTwitterShare}>
+              Share Ticket on
+            </Button>
           )}
         </div>
       </div>
@@ -151,10 +156,10 @@ const Ticket: FC<{
 
         {TICKETS.map((ticket, index) => (
           <div
-            key={index + "ticket"}
+            key={index + 'ticket'}
             className={clsx(
-              "relative font-bebas tracking-tighter uppercase",
-              index + 1 !== selectedIndex && "hidden",
+              'relative font-bebas tracking-tighter uppercase',
+              index + 1 !== selectedIndex && 'hidden'
             )}
           >
             <Image
@@ -175,9 +180,9 @@ const Ticket: FC<{
               />
               <div className="flex flex-col gap-[7.72px] md:gap-4">
                 <span className="text-[38px] leading-[30.4px] mobile:text-[80px] mobile:leading-[64px] text-black">
-                  {user?.name?.split(" ").shift() || "YOUR"}
+                  {user?.name?.split(' ').shift() || 'YOUR'}
                   <br />
-                  {user?.name?.split(" ").pop() || "NAME"}
+                  {user?.name?.split(' ').pop() || 'NAME'}
                 </span>
                 <div className="flex items-center gap-[3.49px] md:gap-[8.09px]">
                   <GithubSvg
@@ -212,11 +217,11 @@ const Ticket: FC<{
                     // @ts-ignore
                     user.numericId
                       ? // @ts-ignore
-                        new Array(9 - user.numericId)
+                        new Array(9 - user.numericId.toString().length)
                           .fill(0)
                           // @ts-ignore
-                          .join("") + user.numericId
-                      : "0000000001"
+                          .join('') + user.numericId
+                      : '0000000001'
                   }
                 </div>
               </div>
@@ -240,14 +245,14 @@ const Ticket: FC<{
                     active={selectedIndex === idx + 1}
                     onClick={async () => {
                       setSelectedIndex(idx + 1);
-                      if (session.status === "authenticated") {
-                        await fetch("/api/dashboard/ticket", {
-                          method: "POST",
+                      if (session.status === 'authenticated') {
+                        await fetch('/api/dashboard/ticket', {
+                          method: 'POST',
                           body: JSON.stringify({
                             color: idx + 1,
                           }),
                           headers: {
-                            "Content-Type": "application/json",
+                            'Content-Type': 'application/json',
                           },
                         });
 

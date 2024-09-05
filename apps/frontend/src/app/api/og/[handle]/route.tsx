@@ -1,13 +1,13 @@
-import { ImageResponse } from "next/og";
-import { TICKETS } from "@frontend/utils/constants";
-import { auth } from "@frontend/auth";
-import { getUser } from "@frontend/queries/get.user";
+import { ImageResponse } from 'next/og';
+import { TICKETS } from '@frontend/utils/constants';
+import { auth } from '@frontend/auth';
+import { getUser } from '@frontend/queries/get.user';
 // App router includes @vercel/og.
 // No need to install it.
 
 async function loadGoogleFont(req: any) {
   const url = await fetch(new URL(`/fonts/bbn.ttf`, req.url).href, {
-    cache: "no-store",
+    cache: 'no-store',
   });
 
   return url.arrayBuffer();
@@ -15,61 +15,61 @@ async function loadGoogleFont(req: any) {
 
 export async function GET(
   req: any,
-  { params }: { params: { handle: string } },
+  { params }: { params: { handle: string } }
 ) {
   const user = await getUser(params.handle);
   if (!user) {
-    return Response.json({ error: "User not found" }, { status: 404 });
+    return Response.json({ error: 'User not found' }, { status: 404 });
   }
 
   const color = [
-    "#FF4836",
-    "#00B976",
-    "#F64F63",
-    "#00A8B3",
-    "#F69D18",
-    "#367AFF",
-  ][user.color-1];
+    '#FF4836',
+    '#00B976',
+    '#F64F63',
+    '#00A8B3',
+    '#F69D18',
+    '#367AFF',
+  ][user.color - 1];
 
   return new ImageResponse(
     (
       <div
         style={{
-          display: "flex",
-          flexDirection: "column",
+          display: 'flex',
+          flexDirection: 'column',
           width: 694,
           height: 430,
           padding: 40,
-          backgroundColor: "black",
+          backgroundColor: 'black',
           backgroundImage:
-            "url(" + new URL(`/tickets/${user.color}.png`, req.url).href + ")",
-          backgroundSize: "100% 100%",
+            'url(' + new URL(`/tickets/${user.color}.png`, req.url).href + ')',
+          backgroundSize: '100% 100%',
         }}
       >
         <img
-          src={new URL("/svgs/LogoWithBlackText.svg", req.url).href}
+          src={new URL('/svgs/LogoWithBlackText.svg', req.url).href}
           alt=""
           width={108}
           height={38}
         />
         <div
-          style={{ marginTop: 42, display: "flex", flexDirection: "column" }}
+          style={{ marginTop: 42, display: 'flex', flexDirection: 'column' }}
         >
           <span
             style={{
-              fontSize: "80px",
-              display: "flex",
-              flexDirection: "column",
-              lineHeight: "64px",
-              color: "black",
+              fontSize: '80px',
+              display: 'flex',
+              flexDirection: 'column',
+              lineHeight: '64px',
+              color: 'black',
             }}
           >
-            <div>{user?.name?.split?.(" ")?.[0]}</div>
-            <div>{user?.name?.split?.(" ")?.[1]}</div>
+            <div>{user?.name?.split?.(' ')?.[0]}</div>
+            <div>{user?.name?.split?.(' ')?.[1]}</div>
           </span>
         </div>
-        <div style={{ marginTop: "16px", display: "flex" }}>
-          <div style={{ display: "flex" }}>
+        <div style={{ marginTop: '16px', display: 'flex' }}>
+          <div style={{ display: 'flex' }}>
             <svg
               width="24"
               height="24"
@@ -112,7 +112,9 @@ export async function GET(
                 fill="currentColor"
               />
             </svg>
-            <div style={{ marginLeft: 8, fontSize: 25, marginTop: -3.5, color }}>
+            <div
+              style={{ marginLeft: 8, fontSize: 25, marginTop: -3.5, color }}
+            >
               {user.handle}
             </div>
           </div>
@@ -121,17 +123,17 @@ export async function GET(
           style={{
             marginTop: 56,
             marginLeft: 430,
-            display: "flex",
+            display: 'flex',
             fontSize: 42,
-            color: "white",
+            color: 'white',
             gap: 10,
           }}
         >
-          <div style={{ display: "flex", alignItems: "flex-end" }}>
+          <div style={{ display: 'flex', alignItems: 'flex-end' }}>
             <div>N</div>
             <div
               style={{
-                textDecoration: "underline",
+                textDecoration: 'underline',
                 fontSize: 30,
                 marginBottom: 5,
               }}
@@ -144,11 +146,11 @@ export async function GET(
               // @ts-ignore
               user.numericId
                 ? // @ts-ignore
-                  new Array(9 - user.numericId)
+                  new Array(9 - user.numericId.toString().length)
                     .fill(0)
                     // @ts-ignore
-                    .join("") + user.numericId
-                : "0000000001"
+                    .join('') + user.numericId
+                : '0000000001'
             }
           </div>
         </div>
@@ -159,12 +161,12 @@ export async function GET(
       height: 430,
       fonts: [
         {
-          name: "bbn",
+          name: 'bbn',
           data: await loadGoogleFont(req),
           weight: 400,
-          style: "normal",
+          style: 'normal',
         },
       ],
-    },
+    }
   );
 }
