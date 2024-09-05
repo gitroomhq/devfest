@@ -87,22 +87,25 @@ const Ticket: FC<{
   const [selectedIndex, setSelectedIndex] = useState(props.user.color || 1);
   const router = useRouter();
 
-  const handleTwitterShare = useCallback((event: any) => {
-    const link = `https://x.com/intent/tweet${objectToGetParams({
-      url: 'https://devfest.ai/ticket/' + user.handle,
-      text: 'I am participating in DevFest AI 2024, share your card and win awesome swag! @devfestai @CopilotKit @llmware @keepalerting @traceloopdev @julep_ai',
-    })}`;
+  const handleTwitterShare = useCallback(
+    (event: any) => {
+      const link = `https://x.com/intent/tweet${objectToGetParams({
+        url: 'https://devfest.ai/ticket/' + user.handle,
+        text: 'I am participating in DevFest AI 2024, share your card and win awesome swag! @devfestai @CopilotKit @llmware @keepalerting @traceloopdev @julep_ai',
+      })}`;
 
-    const windowConfig = {
-      width: 550,
-      height: 400,
-      ...getBoxPositionOnWindowCenter(550, 400),
-    };
+      const windowConfig = {
+        width: 550,
+        height: 400,
+        ...getBoxPositionOnWindowCenter(550, 400),
+      };
 
-    event.preventDefault();
+      event.preventDefault();
 
-    windowOpen(link, windowConfig);
-  }, []);
+      windowOpen(link, windowConfig);
+    },
+    [user]
+  );
 
   return (
     <section id="ticket" className="">
