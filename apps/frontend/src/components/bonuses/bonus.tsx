@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { Button } from "@frontend/components/button";
-import { CopyToClipboard } from "react-copy-to-clipboard";
-import { useSession } from "next-auth/react";
-import toast from "react-hot-toast";
+import { Button } from '@frontend/components/button';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { useSession } from 'next-auth/react';
+import toast from 'react-hot-toast';
 
 export function Bonuses() {
   const session = useSession();
@@ -30,10 +30,10 @@ export function Bonuses() {
             <div className="flex items-center">1 per friend [Max:5]</div>
             <div className="flex items-center">
               <CopyToClipboard
-                text={`https://hackfest.ai/friend/${session?.data?.user?.id}`}
+                text={`https://devfest.ai/friend/${session?.data?.user?.id}`}
                 onCopy={() => {
-                  toast.success("Copied to clipboard", {
-                    icon: "👏",
+                  toast.success('Copied to clipboard', {
+                    icon: '👏',
                   });
                 }}
               >

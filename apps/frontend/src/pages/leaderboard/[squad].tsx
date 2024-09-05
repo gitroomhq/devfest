@@ -1,13 +1,13 @@
-import { Wrapper } from "@frontend/components/layout/wrapper";
-import { getSquadById } from "@frontend/queries/get.squad.by.id";
-import { Squad, SquadProps } from "@frontend/components/squads/squad";
-import Seo from "@frontend/components/seo/seo";
+import { Wrapper } from '@frontend/components/layout/wrapper';
+import { getSquadById } from '@frontend/queries/get.squad.by.id';
+import { Squad, SquadProps } from '@frontend/components/squads/squad';
+import Seo from '@frontend/components/seo/seo';
 export default function Squads(props: { squad: SquadProps }) {
   return (
     <>
       <Seo
         title={`${props.squad.name} Squad`}
-        description={`HackFest 2024 ${props.squad.name} Squad Page`}
+        description={`DevFest 2024 ${props.squad.name} Squad Page`}
       />
       <Wrapper>
         <Squad {...props} />
@@ -18,7 +18,7 @@ export default function Squads(props: { squad: SquadProps }) {
 export const getStaticPaths = async () => {
   return {
     paths: [],
-    fallback: "blocking",
+    fallback: 'blocking',
   };
 };
 
@@ -29,7 +29,7 @@ export const getStaticProps = async (context: {
   if (!squad) {
     return {
       props: {
-        redirect: "/404",
+        redirect: '/404',
       },
     };
   }

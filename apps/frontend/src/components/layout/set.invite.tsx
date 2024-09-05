@@ -1,24 +1,24 @@
-"use client";
+'use client';
 
-import {FC, useCallback, useEffect, useState} from "react";
-import { checkInvite, trySetToTeam } from "@frontend/app/actions/set.invite";
-import { signIn, useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { FC, useCallback, useEffect, useState } from 'react';
+import { checkInvite, trySetToTeam } from '@frontend/app/actions/set.invite';
+import { signIn, useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 
 export const SetInvite: FC<{ id: string }> = ({ id }) => {
   const session = useSession();
   const router = useRouter();
   const [isValid, setIsValid] = useState(true);
   const updateInvite = useCallback(async () => {
-    if (session.status === "unauthenticated") {
+    if (session.status === 'unauthenticated') {
       if (await checkInvite(id)) {
         setTimeout(() => {
-          signIn("github", {
+          signIn('github', {
             callbackUrl: window.location.href,
           });
         }, 3000);
 
-        return ;
+        return;
       }
 
       setIsValid(false);
@@ -27,12 +27,12 @@ export const SetInvite: FC<{ id: string }> = ({ id }) => {
 
     await trySetToTeam(id);
     setTimeout(() => {
-      router.push("/dashboard");
+      router.push('/dashboard');
     }, 3000);
   }, [id, session.status]);
 
   useEffect(() => {
-    if (session.status === "loading" || !id) return;
+    if (session.status === 'loading' || !id) return;
     updateInvite();
   }, [id, session.status]);
 
@@ -40,12 +40,12 @@ export const SetInvite: FC<{ id: string }> = ({ id }) => {
     return <>Invalid invite</>;
   }
 
-  if (session.status === "loading") {
+  if (session.status === 'loading') {
     return null;
   }
 
-  if (session.status === "authenticated") {
-    return <>You are being redirected to your new squad on HackFest AI</>;
+  if (session.status === 'authenticated') {
+    return <>You are being redirected to your new squad on DevFest AI</>;
   }
-  return <>You are being redirected to HackFest AI GitHub registration</>;
+  return <>You are being redirected to DevFest AI GitHub registration</>;
 };

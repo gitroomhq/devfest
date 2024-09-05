@@ -334,9 +334,9 @@ export const FAQ_ITEMS = [
       "Each day at midnight we will calculate every squad member MERGED PR and sum them all together. By the end of the event, the top 20 squads will win awesome swag! (each swag member)",
   },
   {
-    question: "Can I register for both Hacktoberfest and HackFest AI?",
+    question: "Can I register for both Hacktoberfest and DevFest AI?",
     answer:
-      "Yes, and even recommended! Each contribution will be counted for both Hacktoberfest and HackFest AI",
+      "Yes, and even recommended! Each contribution will be counted for both Hacktoberfest and DevFest AI",
   },
   {
     question: "How long will it take to receive the swag?",
