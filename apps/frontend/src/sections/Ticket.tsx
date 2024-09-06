@@ -185,9 +185,9 @@ const Ticket: FC<{
               />
               <div className="flex flex-col gap-[7.72px] md:gap-4">
                 <span className="text-[38px] leading-[30.4px] mobile:text-[80px] mobile:leading-[64px] text-black">
-                  {name || 'YOUR'}
+                  {user?.name ? name : 'YOUR'}
                   <br />
-                  {lastName.join(' ') || 'NAME'}
+                  {user?.name ? lastName.join(' ') : 'NAME'}
                 </span>
                 <div className="flex items-center gap-[3.49px] md:gap-[8.09px]">
                   <GithubSvg
