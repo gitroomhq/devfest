@@ -98,7 +98,7 @@ export const MySquad: FC<{
           <div className="flex flex-1 flex-col gap-[12px]">
             <div className="bg-[#191919] p-[40px] rounded-[16px] flex flex-col gap-[40px]">
               <div className="capitalize text-[16px] text-white/70">
-                [ {props.user.squad.members.length} participants ]
+                [ {props.user.squad.members.length} / 5 participants ]
               </div>
               <div className="flex gap-[32px]">
                 <Members user={props.user} />

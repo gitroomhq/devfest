@@ -26,7 +26,7 @@ const FAQItem: FC<{ question: string; answer: any; spliter: boolean }> = (
           } transition-all`}
         />
       </div>
-      <h5
+      <div
         {...(typeof answer === "string"
           ? {
               dangerouslySetInnerHTML: {

@@ -83,3 +83,8 @@ h6 {
 .wrapinv:hover .inv:before {
   content: "Copy invite link to clipboard";
 }
+
+.listerin {
+  list-style: disc;
+  padding-left: 20px;
+}

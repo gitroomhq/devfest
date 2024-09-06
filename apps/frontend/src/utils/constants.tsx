@@ -306,12 +306,12 @@ export const FAQ_ITEMS = [
   {
     question: "When is the event happening?",
     answer:
-      "Registration is open! Event will start between 1st - 31st October 2023",
+      "Registration is open! The event will start between 1st - 31st October 2024",
   },
   {
     question: "How does it work?",
     answer:
-      "Register to the DevFest using your GitHub, Join a squad or get assigned to a random squad, contribute code to AI repositories and get Swag! Not sure where to start? Check: goodfirstissue.dev",
+      "Register to the DevFest using your GitHub, Join a squad or get assigned to a random squad, contribute code to AI repositories and get Swag!",
   },
   {
     question: "How many members can join a squad?",
@@ -321,12 +321,21 @@ export const FAQ_ITEMS = [
   {
     question: "How do we calculate the score?",
     answer:
-      "Every hour we will calculate every squad member MERGED PR for AI repositories and sum them all together. By the end of the event, the top 60 squads will win awesome swag! The calculation method can be found here",
+      "Every hour we will calculate every squad member MERGED PR for AI repositories and sum them all together. By the end of the event, the top 20 squads will win awesome swag! The calculation method can be found here",
   },
   {
     question: "What are the rules?",
     answer:
-      "Meet amazing new people, get more involved with the open-source community and win awesome swag!",
+      <ul className="listerin">
+        <li>Please respect each other. We are all here for the same goal</li>
+        <li>DSA repositories are not allowed</li>
+        <li>You can only contribute to AI-based repositories or repositories that have AI features</li>
+        <li>Only repositories with more than 200 stars are acceptable to reduce spam</li>
+        <li>You can only contribute to repositories created before October</li>
+        <li>3 Mods can disqualify any teams or members if they decide that the contested does not comply with the Rule of Reason</li>
+        <li>Avoid Mockery of any kind</li>
+        <li>The rules can be changed at any time</li>
+      </ul>,
   },
   {
     question: "How many people will get swag?",
