@@ -340,7 +340,7 @@ export const FAQ_ITEMS = [
   {
     question: "How many people will get swag?",
     answer:
-      "Each day at midnight we will calculate every squad member MERGED PR and sum them all together. By the end of the event, the top 20 squads will win awesome swag! (each swag member)",
+      "Each day at midnight we will calculate every squad member MERGED PR and sum them all together. By the end of the event, the top 20 squads will win awesome swag! (each squad member)",
   },
   {
     question: "Can I register for both Hacktoberfest and DevFest AI?",
