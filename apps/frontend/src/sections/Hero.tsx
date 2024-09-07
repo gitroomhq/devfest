@@ -9,7 +9,7 @@ const Hero = () => {
   const router = useRouter();
 
   return (
-    <div className="relative mobile:pb-[290px] max-mobile:pb-[50px] md:pb-0">
+    <div className="relative mobile:pb-[290px] max-mobile:pb-[150px] md:pb-0">
       <div className="flex justify-center">
         <Image
           src="/Hero.png"

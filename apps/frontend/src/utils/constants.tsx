@@ -107,7 +107,7 @@ export const SPONSORS = [
     path: "https://llmware.ai/",
   },
   {
-    name: "Keephq",
+    name: "Keep",
     logoImg: {
       src: require("@frontend/images/sponsors/Keep.svg"),
       alt: "",
@@ -365,7 +365,7 @@ export const FOOTER_MENU = [
       { name: "Llmware", path: "https://llmware.ai/" },
       { name: "Copoilotkit", path: "https://copilotkit.ai/" },
       { name: "Traceloop", path: "https://traceloop.com/" },
-      { name: "Keephq", path: "https://keephq.dev/" },
+      { name: "Keep", path: "https://keephq.dev/" },
       { name: "Julep", path: "https://julep.ai/" },
     ],
   },
