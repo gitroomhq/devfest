@@ -58,7 +58,7 @@ const Footer = () => {
         </div>
         <div className="flex gap-2">
           <Link
-            href="https://chat.whatsapp.com/B9msrogQYW5D6UA9ASjPJP"
+            href="https://whatsapp.com/channel/0029VakC1dbA2pLGYG9Jph1L"
             target="_blank"
           >
             <IconButton icon="WhatsApp" />

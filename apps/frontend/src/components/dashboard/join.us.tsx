@@ -29,7 +29,7 @@ const contactOptions = [
     icon: "/icons/WhatsApp.svg",
     title: "WhatsApp",
     description: "Connect to our group for instant news",
-    link: "https://chat.whatsapp.com/B9msrogQYW5D6UA9ASjPJP",
+    link: "https://whatsapp.com/channel/0029VakC1dbA2pLGYG9Jph1L",
     className: "bg-gradBottomRight",
     cta: "Join us",
   },
