@@ -72,6 +72,7 @@ const Ticket: FC<{
   hideColorPicker?: boolean;
   hideCTA?: boolean;
 }> = (props) => {
+  const [isLoading, setIsLoading] = useState(false);
   const { user, hideColorPicker, hideCTA } = props;
   const session = useSession();
   useEffect(() => {
@@ -248,9 +249,11 @@ const Ticket: FC<{
                     key={`ticket_${idx}`}
                     gradientColor={color}
                     active={selectedIndex === idx + 1}
+                    isLoading={isLoading}
                     onClick={async () => {
                       setSelectedIndex(idx + 1);
                       if (session.status === 'authenticated') {
+                        setIsLoading(true);
                         await fetch('/api/dashboard/ticket', {
                           method: 'POST',
                           body: JSON.stringify({
@@ -262,6 +265,7 @@ const Ticket: FC<{
                         });
 
                         await session.update({ color: idx + 1 });
+                        setIsLoading(false);
                       }
                     }}
                   />

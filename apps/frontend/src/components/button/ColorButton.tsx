@@ -6,11 +6,13 @@ interface ColorButtonProps
   gradientColor: string;
   active?: boolean;
   className?: string;
+  isLoading?: boolean;
 }
 
 const ColorButton: FC<ColorButtonProps> = ({
   gradientColor,
   active = false,
+  isLoading = false,
   className = "",
   ...props
 }) => {
@@ -19,6 +21,7 @@ const ColorButton: FC<ColorButtonProps> = ({
       className={clsx(
         "flex justify-center items-center",
         "size-8 md:size-11 rounded-full",
+        !active && isLoading && "grayscale pointer-events-none",
         active && "border border-white",
         className
       )}

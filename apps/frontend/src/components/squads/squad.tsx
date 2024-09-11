@@ -53,7 +53,7 @@ export const Squad: FC<{ squad: SquadProps }> = (props) => {
             >
               <div className="text-left flex items-center">{index + 1}</div>
               <div className="text-left flex items-center">
-                <Image width={50} height={50} src={p.image} alt={p.name} />
+                <Image width={50} height={50} src={p.image} alt={p.name} className="rounded-full" />
               </div>
               <div className="flex items-center gap-[10px]">
                 <Link href={`https://github.com/${p.handle}`} target="_blank" className="flex flex-col">
