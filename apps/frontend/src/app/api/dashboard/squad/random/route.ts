@@ -1,7 +1,5 @@
 import { auth } from "@frontend/auth";
 import { prisma } from "@db/prisma";
-import slugify from "slugify";
-import { makeid } from "@frontend/utils/makeid";
 
 export const POST = auth(async (req, res) => {
   const getSquad = await prisma.user.findFirst({
@@ -25,6 +23,10 @@ export const POST = auth(async (req, res) => {
   const findAGroup = await prisma.user.groupBy({
     by: ["squadId"],
     where: {
+      banned: false,
+      squad: {
+        allowOthersToJoin: true,
+      },
       squadId: {
         not: null,
       },

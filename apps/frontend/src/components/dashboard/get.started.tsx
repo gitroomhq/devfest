@@ -1,12 +1,24 @@
 import { Button } from "@frontend/components/button";
 import FAQ from "../../sections/FAQ";
 import { FC, useCallback } from "react";
+import Swal from 'sweetalert2';
 
 export const GetStarted: FC<{ rerenderPage: () => void }> = (props) => {
   const createAnewSquad = useCallback(async () => {
+    const allowRandom = await Swal.fire({
+      title: 'Do you want to allow random people to join your squad?',
+      showDenyButton: true,
+      confirmButtonText: `Yes`,
+      denyButtonText: `No`,
+    });
+
     await fetch("/api/dashboard/squad/create", {
       method: "POST",
       cache: "no-cache",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ allowRandom: allowRandom.isConfirmed }),
     });
 
     alert("Squad created successfully");
@@ -24,7 +36,7 @@ export const GetStarted: FC<{ rerenderPage: () => void }> = (props) => {
   }, []);
   return (
     <div className="flex flex-col">
-      <h1 className="mb-10 text-center font-inter mx-auto max-w-4xl font-semibold text-[100px] md:text-42 xs:max-w-[246px]">
+      <h1 className="mb-10 text-center font-inter mx-auto max-w-4xl font-semibold max-mobile:text-[60px] text-[100px] md:text-42 xs:max-w-[246px]">
         Let{"'"}s get you started
       </h1>
 

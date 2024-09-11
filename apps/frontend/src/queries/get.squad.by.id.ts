@@ -16,6 +16,7 @@ export const getSquadById = (id: string) => {
           handle: true,
           image: true,
           score: true,
+          banned: true,
           prs: true,
           bonuses: {
             select: {

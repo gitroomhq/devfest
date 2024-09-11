@@ -9,12 +9,14 @@ export default async function handler(
 ) {
   const session = await auth(req, res)
   if (!session?.user) {
-    return res.status(401).json({ message: "Not authenticated" });
+    res.status(401).json({ message: "Not authenticated" });
+    return ;
   }
 
   const body = await req.body;
   if (!body.color || +body.color < 1 || +body.color > 6) {
-    return res.json({ error: "Invalid color" });
+    res.status(200).json({ error: "Invalid color" });
+    return ;
   }
 
   await prisma.user.update({
@@ -29,5 +31,5 @@ export default async function handler(
   // @ts-ignore
   await res.revalidate(`/ticket/` + session?.user?.handle);
 
-  return res.json({ data: "Protected data" });
+  res.status(200).json({ data: "Protected data" });
 }

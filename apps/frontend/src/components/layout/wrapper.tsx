@@ -1,25 +1,25 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import { IoClose as Close } from "react-icons/io5";
-import Link from "next/link";
-import { HEADER_MENU } from "@frontend/utils/constants";
-import { HiOutlineMenu as Menu } from "react-icons/hi";
-import React, { ReactNode } from "react";
-import { usePathname } from "next/navigation";
-import { Footer } from "@frontend/sections";
-import { useSession } from "next-auth/react";
-import {Toaster} from "react-hot-toast";
+import Image from 'next/image';
+import { IoClose as Close } from 'react-icons/io5';
+import Link from 'next/link';
+import { HEADER_MENU } from '@frontend/utils/constants';
+import { HiOutlineMenu as Menu } from 'react-icons/hi';
+import React, { ReactNode } from 'react';
+import { usePathname } from 'next/navigation';
+import { Footer } from '@frontend/sections';
+import { useSession, signOut } from 'next-auth/react';
+import { Toaster } from 'react-hot-toast';
 
 export const Wrapper = ({ children }: { children: ReactNode }) => {
   const pathName = usePathname();
   const session = useSession();
 
   const toggleMenu = (force = false) => {
-    const navLinks = document.getElementById("navLinks");
-    navLinks?.classList.toggle("opacity-0", force);
-    navLinks?.classList.toggle("pointer-events-none", force);
-    document.documentElement.style.overflow = force ? "auto" : "hidden";
+    const navLinks = document.getElementById('navLinks');
+    navLinks?.classList.toggle('opacity-0', force);
+    navLinks?.classList.toggle('pointer-events-none', force);
+    document.documentElement.style.overflow = force ? 'auto' : 'hidden';
     // navLinks?.classList.toggle('hidden', force);
   };
   React.useEffect(() => {
@@ -56,8 +56,8 @@ export const Wrapper = ({ children }: { children: ReactNode }) => {
               {HEADER_MENU.map((item, index) => (
                 <Link
                   href={
-                    item?.name === "Ticket"
-                      ? session?.status === "authenticated"
+                    item?.name === 'Ticket'
+                      ? session?.status === 'authenticated'
                         ? // @ts-ignore
                           `/dashboard/ticket`
                         : item?.path
@@ -67,20 +67,30 @@ export const Wrapper = ({ children }: { children: ReactNode }) => {
                   onClick={() => toggleMenu(true)}
                 >
                   <li
-                    className={`cursor-pointer border-b-[${index < HEADER_MENU.length - 1 ? 1 : 0}px] border-[#FFFFFF33] text-[24px] text-white transition duration-300 ease-in active:text-[#FBFF14] hover:text-[#A489FF] md:border-none md:py-[30px] uppercase font-bebas`}
+                    className={`cursor-pointer border-b-[${
+                      index < HEADER_MENU.length - 1 ? 1 : 0
+                    }px] border-[#FFFFFF33] text-[24px] text-white transition duration-300 ease-in active:text-[#FBFF14] hover:text-[#A489FF] md:border-none md:py-[30px] uppercase font-bebas`}
                   >
                     {item?.name}
                   </li>
                 </Link>
               ))}
-              {session.status == "authenticated" && (
-                <Link href="/dashboard" onClick={() => toggleMenu(true)}>
+              {session.status == 'authenticated' && (
+                <Link className="flex-1" href="/dashboard" onClick={() => toggleMenu(true)}>
                   <li
                     className={`cursor-pointer border-[#FFFFFF33] text-[24px] text-white transition duration-300 ease-in active:text-[#FBFF14] hover:text-[#A489FF] md:border-none md:py-[30px] uppercase font-bebas`}
                   >
                     Your Team
                   </li>
                 </Link>
+              )}
+              {session.status == 'authenticated' && (
+                <li
+                  onClick={() => signOut()}
+                  className={`cursor-pointer border-[#FFFFFF33] text-[24px] text-white transition duration-300 ease-in active:text-[#FBFF14] hover:text-[#A489FF] md:border-none md:py-[30px] uppercase font-bebas`}
+                >
+                  Logout
+                </li>
               )}
             </ul>
           </div>

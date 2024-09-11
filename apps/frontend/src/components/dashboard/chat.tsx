@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { Button } from "@frontend/components/button";
-import { FC, useCallback, useEffect, useRef, useState } from "react";
-import useSWR from "swr";
-import dayjs from "dayjs";
-import utc from "dayjs/plugin/utc";
+import { Button } from '@frontend/components/button';
+import { FC, useCallback, useEffect, useRef, useState } from 'react';
+import useSWR from 'swr';
+import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
 dayjs.extend(utc);
 
 const ScrollBottom: FC<{ scroll: () => void; reload: boolean }> = (props) => {
@@ -15,22 +15,22 @@ const ScrollBottom: FC<{ scroll: () => void; reload: boolean }> = (props) => {
 };
 
 const SendMessage: FC<{ update: () => void }> = (props) => {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('');
 
   const submit = useCallback(
     async (e: any) => {
       e.preventDefault();
-      await fetch("/api/dashboard/messages", {
-        method: "POST",
+      await fetch('/api/dashboard/messages', {
+        method: 'POST',
         body: JSON.stringify({ message: value }),
       });
       if (value.length < 3) {
-        return alert("You have to type at least 3 characters");
+        return alert('You have to type at least 3 characters');
       }
-      setValue("");
+      setValue('');
       props.update();
     },
-    [value],
+    [value]
   );
 
   return (
@@ -84,13 +84,13 @@ export function Chat() {
 
   const loadChat = useCallback(async () => {
     return (
-      await fetch("/api/dashboard/messages", {
-        method: "GET",
+      await fetch('/api/dashboard/messages', {
+        method: 'GET',
       })
     ).json();
   }, []);
 
-  const { data, isLoading, mutate } = useSWR("messages", loadChat);
+  const { data, isLoading, mutate } = useSWR('messages', loadChat);
 
   if (isLoading) {
     return <></>;
@@ -108,6 +108,69 @@ export function Chat() {
             // @ts-ignore
             ref={ref}
           >
+            <div className="flex gap-[8px] items-end pr-[20px]">
+              <div className="min-w-[40px]">
+                <img
+                  className="w-[40px] h-[40px] bg-fuchsia-500 rounded-full"
+                  alt="Nevo David"
+                  src="https://avatars.githubusercontent.com/u/100117126?v=4"
+                />
+              </div>
+              <div className="rounded-[12px] gap-[8px] rounded-bl-none bg-[#2D2D2D] p-[12px] flex flex-col">
+                <div className="flex gap-[12px] items-center">
+                  <div className="text-[#FBFF14] text-[20px]">Nevo David</div>
+                  <div className="text-[#8e8e8e]">
+                    {dayjs().local().format('hh:mm a')}
+                  </div>
+                </div>
+                <div className="text-[20px] font-[300]">
+                  Hi guys welcome to your squad!
+                  <br />
+                  <br />
+                  Make sure you create your{' '}
+                  <a href="/ticket" className="underline hover:font-bold">
+                    personal ticket
+                  </a>{' '}
+                  and share it.
+                  <br />
+                  I will be giving random swag to the people who share.
+                  <br />
+                  <br />
+                  Don{"'"}t forget to check your bonuses, we will add more add
+                  during the competition.
+                  <br />
+                  And of course, follow us on:{' '}
+                  <a
+                    className="underline hover:font-bold"
+                    href="https://whatsapp.com/channel/0029VakC1dbA2pLGYG9Jph1L"
+                  >
+                    WhatsApp
+                  </a>
+                  ,{' '}
+                  <a
+                    className="underline hover:font-bold"
+                    href="https://t.me/+KZVCCxksVcpkNmZk"
+                  >
+                    Telegram
+                  </a>
+                  ,
+                  <a
+                    className="underline hover:font-bold"
+                    href="https://discord.gg/raSVgQP9vx"
+                  >
+                    Discord
+                  </a>
+                  , and{' '}
+                  <a
+                    className="underline hover:font-bold"
+                    href="https://x.com/devfestai"
+                  >
+                    X
+                  </a>
+                  , to know about everything first.
+                </div>
+              </div>
+            </div>
             {data.messages.map(
               (p: {
                 id: string;
@@ -133,13 +196,13 @@ export function Chat() {
                         {p.user.name}
                       </div>
                       <div className="text-[#8e8e8e]">
-                        {dayjs(p.createdAt).local().format("hh:mm a")}
+                        {dayjs(p.createdAt).local().format('hh:mm a')}
                       </div>
                     </div>
                     <div className="text-[20px] font-[300]">{p.message}</div>
                   </div>
                 </div>
-              ),
+              )
             )}
             <ScrollBottom scroll={scroll} reload={reload} />
           </div>

@@ -2,6 +2,7 @@ import { auth } from "@frontend/auth";
 import { prisma } from "@db/prisma";
 
 export const POST = auth(async (req, res) => {
+  const body = await req.json();
   const getSquad = await prisma.user.findFirst({
     where: {
       id: req?.auth?.user?.id,
@@ -24,7 +25,7 @@ export const POST = auth(async (req, res) => {
     data: {
       name: req?.auth?.user?.name + `'s Squad`,
       banned: false,
-      allowOthersToJoin: false,
+      allowOthersToJoin: Boolean(body.allowRandom || false),
       ownerId: req?.auth?.user?.id!,
       score: 0,
     },

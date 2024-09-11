@@ -6,7 +6,7 @@ export const Members: FC<{ user: User }> = (props) => {
   return (
     <div className="flex gap-[32px]">
       {props.user.squad.members.map((p) => (
-        <div className="flex flex-col" key={p.id}>
+        <div className="flex flex-col items-center" key={p.id}>
           <div className="w-[130px] h-[130px] bg-black rounded-full overflow-hidden">
             <img
               className="relative z-[1] aspect-square h-full w-full rounded-full"

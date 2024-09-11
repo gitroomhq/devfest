@@ -1,8 +1,8 @@
-"use client";
-import { Button } from "@frontend/components/button";
-import { FC, useCallback, useEffect, useState } from "react";
-import { User } from "@frontend/components/dashboard/main";
-import toast from "react-hot-toast";
+'use client';
+import { Button } from '@frontend/components/button';
+import { FC, useCallback, useEffect, useState } from 'react';
+import { User } from '@frontend/components/dashboard/main';
+import toast from 'react-hot-toast';
 
 export const TeamDetails: FC<{
   user: User;
@@ -11,39 +11,49 @@ export const TeamDetails: FC<{
 }> = (props) => {
   const [name, setName] = useState(props.user.squad.name);
   const [allowRandomJoin, setAllowRandomJoin] = useState(
-    props.user.squad.allowOthersToJoin,
+    props.user.squad.allowOthersToJoin
   );
 
   const save = useCallback(
     async (e: any) => {
       e.preventDefault();
       e.stopPropagation();
-      await fetch("/api/dashboard/squad", {
-        method: "PUT",
+
+      if (name.length < 3) {
+        toast.error('Name must be at least 3 characters', {
+          icon: '🚨',
+        });
+        return;
+      }
+      await fetch('/api/dashboard/squad', {
+        method: 'PUT',
         body: JSON.stringify({
           name,
           allowRandomJoin,
         }),
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
       });
 
-      toast.success("Saved!", {
-        icon: "👏",
+      toast.success('Saved!', {
+        icon: '👏',
       });
 
       props.mutate();
       props.close();
     },
-    [allowRandomJoin, name],
+    [allowRandomJoin, name]
   );
 
   return (
-    <div className="fixed left-0 top-0 w-full h-full flex justify-center items-center z-[500]" onClick={() => props.close()}>
+    <div
+      className="fixed left-0 top-0 w-full h-full flex justify-center items-center z-[500]"
+      onClick={() => props.close()}
+    >
       <form
         onSubmit={save}
-        onClick={p => p.stopPropagation()}
+        onClick={(p) => p.stopPropagation()}
         className="p-[50px] rounded-[16px] border border-[#704DFF]/30 max-w-[540px] w-full mx-auto bg-[#191919]"
         data-id={2}
       >

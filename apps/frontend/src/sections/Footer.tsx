@@ -66,7 +66,7 @@ const Footer = () => {
           <Link href="https://t.me/+KZVCCxksVcpkNmZk" target="_blank">
             <IconButton icon="Telegram" />
           </Link>
-          <Link href="https://github.com/gitroomhq/hackai" target="_blank">
+          <Link href="https://github.com/gitroomhq/devfest" target="_blank">
             <IconButton icon="github" />
           </Link>
           <Link href="https://discord.gg/raSVgQP9vx" target="_blank">
