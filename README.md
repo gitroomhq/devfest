@@ -1,101 +1,52 @@
-# 
+# Welcome to DevFest AI 2024!
 
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
+**TL;DR**, we created a fantastic event where you can contribute code for any AI repository and get awesome swag.
 
-✨ Your new, shiny [Nx workspace](https://nx.dev) is ready ✨.
+Join here: https://devfest.ai
 
-[Learn more about this workspace setup and its capabilities](https://nx.dev/nx-api/node?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
+![DevFest](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/gvyqz3q4w6wpdk1dzmbm.gif)
 
-## Run tasks
 
-To run the dev server for your app, use:
+## What is this GitHub repository?
 
-```sh
-npx nx serve hackai
-```
+This is the code of DevFest.ai. You find the entire code for:
+1. The website and the dashboard. (NextJS)
+2. The points calculation system. (NodeJS)
 
-To create a production bundle:
+Want to see some new features? feel free to contribute them.
 
-```sh
-npx nx build hackai
-```
+## Here we go again
 
-To see all available targets to run for a project, run:
+Every year, we run a different competition 😝
+Last year it was [HackSquad](https://hacksquad.dev), this year we are running [DevFest AI](https://devfest.ai)
 
-```sh
-npx nx show project hackai
-```
-        
-These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
+The rules are very basic.
 
-[More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+1. Go to DevFest AI - create or join an existing squad.
+2. Contribute code for any repository containing AI.
+3. Collect points, and by the end of the event, 100 people will get awesome swag (the number might go up!)
 
-## Add new projects
+We will also run some fun giveaways for swag during the competition.
 
-While you could add new projects to your workspace manually, you might want to leverage [Nx plugins](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) and their [code generation](https://nx.dev/features/generate-code?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) feature.
+And, of course, share your fantastic ticket 🎫
 
-Use the plugin's generator to create new projects.
+![Awesome Ticket](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/d1p6j0bu9j14od92avns.png)
 
-To generate a new application, use:
+---
 
-```sh
-npx nx g @nx/node:app demo
-```
+## Why join? :)
 
-To generate a new library, use:
+With DevFest, you can meet new squad members and talk to many developers on Discord.
 
-```sh
-npx nx g @nx/node:lib mylib
-```
+Let's put the awesome Swag aside. This is the time to learn new coding skills and win the DevFest AI certificate that you can use later when:
 
-You can use `npx nx list` to get a list of installed plugins. Then, run `npx nx list <plugin-name>` to learn about more specific capabilities of a particular plugin. Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) to browse plugins and generators in your IDE.
+1. Presenting your profile.
+2. Applying for jobs.
+3. Or to show how good you are.
 
-[Learn more about Nx plugins &raquo;](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) | [Browse the plugin registry &raquo;](https://nx.dev/plugin-registry?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+You will also be exposed to many open-source sponsors looking for excellent developers: [CopilotKit](https://copilotkit.ai), [Composio](https://composio.dev), [Julep](https://julep.ai), [LLMWare](https://llmware.ai), [Traceloop](https://traceloop.com), [Keep](https://keephq.dev), [Taipy](https://taipy.io), [ToolJet](https://tooljet.io), [Digger.dev](https://digger.dev), and [Classiq](https://classiq.io)!
 
-## Set up CI!
 
-### Step 1
+![Sponsors](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/kzv4llir7m7li4a6jnwz.png)
 
-To connect to Nx Cloud, run the following command:
-
-```sh
-npx nx connect
-```
-
-Connecting to Nx Cloud ensures a [fast and scalable CI](https://nx.dev/ci/intro/why-nx-cloud?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) pipeline. It includes features such as:
-
-- [Remote caching](https://nx.dev/ci/features/remote-cache?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task distribution across multiple machines](https://nx.dev/ci/features/distribute-task-execution?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Automated e2e test splitting](https://nx.dev/ci/features/split-e2e-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task flakiness detection and rerunning](https://nx.dev/ci/features/flaky-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-### Step 2
-
-Use the following command to configure a CI workflow for your workspace:
-
-```sh
-npx nx g ci-workflow
-```
-
-[Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Install Nx Console
-
-Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
-
-[Install Nx Console &raquo;](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Useful links
-
-Learn more:
-
-- [Learn more about this workspace setup](https://nx.dev/nx-api/node?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects)
-- [Learn about Nx on CI](https://nx.dev/ci/intro/ci-with-nx?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Releasing Packages with Nx release](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [What are Nx plugins?](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-And join the Nx community:
-- [Discord](https://go.nx.dev/community)
-- [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
-- [Our Youtube channel](https://www.youtube.com/@nxdevtools)
-- [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+P.S - The competition will start during Hacktoberfest, feel free to participate in both of them  🚀
