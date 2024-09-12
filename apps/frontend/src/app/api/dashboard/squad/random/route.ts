@@ -34,7 +34,7 @@ export const POST = auth(async (req, res) => {
     having: {
       squadId: {
         _count: {
-          lte: 5,
+          lt: 5,
         },
       },
     },
