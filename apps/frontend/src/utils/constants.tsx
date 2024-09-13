@@ -363,7 +363,7 @@ export const FOOTER_MENU = [
     title: "Gold Sponsors",
     items: [
       { name: "Llmware", path: "https://llmware.ai/" },
-      { name: "Copoilotkit", path: "https://copilotkit.ai/" },
+      { name: "CopilotKit", path: "https://copilotkit.ai/" },
       { name: "Traceloop", path: "https://traceloop.com/" },
       { name: "Keep", path: "https://keephq.dev/" },
       { name: "Julep", path: "https://julep.ai/" },
