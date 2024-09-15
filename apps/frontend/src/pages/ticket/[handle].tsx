@@ -40,7 +40,6 @@ export const getStaticProps = async (context: {
   params: { handle: string };
 }) => {
   const user = await getUser(context.params.handle);
-  console.log(user);
   if (!user) {
     return {
       props: {

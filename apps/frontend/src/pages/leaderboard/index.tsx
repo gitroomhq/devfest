@@ -1,8 +1,8 @@
-import { Wrapper } from "@frontend/components/layout/wrapper";
-import { getLeaderBoard } from "@frontend/queries/leaderboard";
-import Seo from "@frontend/components/seo/seo";
-import Link from "next/link";
-import { useRouter } from "next/router";
+import { Wrapper } from '@frontend/components/layout/wrapper';
+import { getLeaderBoard } from '@frontend/queries/leaderboard';
+import Seo from '@frontend/components/seo/seo';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 export default function Index(props: {
   leaderBoard: { id: string; name: string; score: number }[];
@@ -51,5 +51,6 @@ export const getStaticProps = async () => {
     props: {
       leaderBoard: leaderBoard,
     },
+    revalidate: 3600,
   };
 };
