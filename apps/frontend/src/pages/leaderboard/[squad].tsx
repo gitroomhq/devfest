@@ -37,5 +37,6 @@ export const getStaticProps = async (context: {
     props: {
       squad,
     },
+    revalidate: 1800,
   };
 };
