@@ -128,7 +128,7 @@ export function Chat() {
                   <br />
                   <br />
                   Make sure you create your{' '}
-                  <a href="/ticket" className="underline hover:font-bold">
+                  <a href="/dashboard/ticket" className="underline hover:font-bold">
                     personal ticket
                   </a>{' '}
                   and share it.
