@@ -1,6 +1,5 @@
 "use server";
 
-import { cookies } from "next/headers";
 import { auth } from "@frontend/auth";
 import { prisma } from "@db/prisma";
 import {addUserToSquad} from "@frontend/queries/add.user.to.squad";

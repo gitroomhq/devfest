@@ -70,7 +70,7 @@ export async function addBonusToUser(inviteId: string) {
   await prisma.bonuses.create({
     data: {
       score: 1,
-      userId: user.user.id!,
+      userId: inviteId!,
       identifier: "invite-friend",
     },
   });
