@@ -12,6 +12,11 @@ import {
 import { FAQ_ITEMS } from "@frontend/utils/constants";
 import { useSession } from "next-auth/react";
 import Seo from "@frontend/components/seo/seo";
+import dynamic from 'next/dynamic';
+
+const ShowEvent = dynamic(() => import('@frontend/utils/show.event'), {
+  ssr: false
+});
 
 export default function Home() {
   const session = useSession();
@@ -21,6 +26,7 @@ export default function Home() {
         title="Home"
         description="Contribute code to AI repositories, meet new people, Participate in events and win awesome SWAG."
       />
+      <ShowEvent />
       <Header />
       <Hero />
       <Sponsors />

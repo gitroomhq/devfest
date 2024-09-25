@@ -10,6 +10,11 @@ import { usePathname } from 'next/navigation';
 import { Footer } from '@frontend/sections';
 import { useSession, signOut } from 'next-auth/react';
 import { Toaster } from 'react-hot-toast';
+import dynamic from 'next/dynamic';
+
+const ShowEvent = dynamic(() => import('@frontend/utils/show.event'), {
+  ssr: false
+});
 
 export const Wrapper = ({ children }: { children: ReactNode }) => {
   const pathName = usePathname();
@@ -29,6 +34,7 @@ export const Wrapper = ({ children }: { children: ReactNode }) => {
   return (
     <>
       <Toaster />
+      <ShowEvent />
       <nav className="absolute z-50 flex items-center justify-between px-5 py-[18px] md:py-0 max-w-[1400px] w-full left-[50%] -translate-x-[50%]">
         <div className="mr-[20px]">
           <Link href="/">
