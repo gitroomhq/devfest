@@ -72,15 +72,6 @@ model SquadMessages {
   @@index([createdAt])
 }
 
-model Repository {
-  id        String  @id @default(cuid())
-  nameOwner String
-  allowed   Boolean @default(false)
-
-  @@index([nameOwner])
-  @@index([allowed])
-}
-
 model Account {
   userId            String
   type              String
@@ -154,11 +145,16 @@ model Squad {
 }
 
 model Repositories {
-  id        String  @id @default(cuid())
+  id        String   @id @default(cuid())
   nameOwner String
-  allowed   Boolean @default(false)
+  allowed   Boolean  @default(false)
+  sponsored Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@unique([nameOwner])
+  @@index([sponsored])
+  @@index([createdAt])
   @@index([nameOwner])
   @@index([allowed])
 }

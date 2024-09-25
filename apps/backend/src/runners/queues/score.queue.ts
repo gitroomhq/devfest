@@ -81,7 +81,7 @@ export class ScoreQueue implements QueueInterface<string> {
       for (const repo of onlyRepos) {
         try {
           // insert missing errors for approval
-          await prisma.repository.create({
+          await prisma.repositories.create({
             data: {
               nameOwner: repo,
               allowed: false,
@@ -93,7 +93,7 @@ export class ScoreQueue implements QueueInterface<string> {
       }
 
       // get all the repos + missing ones
-      const findAllRepos = await prisma.repository.findMany({
+      const findAllRepos = await prisma.repositories.findMany({
         where: {
           nameOwner: {
             in: onlyRepos,

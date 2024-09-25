@@ -4,6 +4,7 @@ export const HEADER_MENU = [
   { name: "Ticket", path: "#ticket" },
   { name: "Swag", path: "/#swag" },
   { name: "FAQ", path: "/#faq" },
+  { name: "Repositories to contribute", path: "/repositories" },
 ];
 
 export const SMALLER_SPONSORS = [
