@@ -8,7 +8,8 @@
     "build:backend": "npx nx build backend --production",
     "run:backend": "node dist/apps/backend/main.js",
     "test": "nx run-many -t test -p frontend backend",
-    "lint": "nx run-many -t lint -p frontend backend"
+    "lint": "nx run-many -t lint -p frontend backend",
+    "postinstall": "npx prisma generate"
   },
   "private": true,
   "dependencies": {
