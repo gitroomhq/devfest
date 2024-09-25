@@ -1,12 +1,19 @@
 import { prisma } from '@db/prisma';
 
-export const repositories = () => {
-  return prisma.repositories.findMany({
+export const repositories = async () => {
+  const list = await prisma.repositories.findMany({
     where: {
-      allowed: true
+      allowed: true,
     },
     orderBy: {
-      sponsored: 'desc'
-    }
-  })
-}
+      sponsored: 'desc',
+    },
+  });
+
+  return list.map(({ allowed, id, sponsored, nameOwner }) => ({
+    allowed,
+    id,
+    sponsored,
+    nameOwner,
+  }));
+};
