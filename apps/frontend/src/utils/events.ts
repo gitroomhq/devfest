@@ -1,6 +1,14 @@
 export const events = [
   {
     id: 1,
+    name: 'Welcome to DevFest - introduction',
+    company: 'DevFest',
+    date: '2024-10-01 12:00:00',
+    url: 'https://lu.ma/520vr2td',
+    youTube: 'https://youtube.com/live/gfwHb9dctTs',
+  },
+  {
+    id: 1,
     name: 'Adding AI to a todo list with Copilots',
     company: 'CopilotKit',
     date: '2024-10-02 12:00:00',
