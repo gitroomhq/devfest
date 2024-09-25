@@ -6,7 +6,6 @@ import {ScoreQueue} from "@backend/runners/queues/score.queue";
 // import {UpdateWinnersCron} from "@backend/runners/cron/update.winners.cron";
 // import {UpdateWinnersQueue} from "@backend/runners/queues/update.winners.queue";
 // import {DevToArticlesCron} from "@backend/runners/cron/dev.to.articles.cron";
-// import {NovuCron} from "@backend/runners/cron/novu.cron";
 
 config();
 
