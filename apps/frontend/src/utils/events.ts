@@ -5,7 +5,7 @@ export const events = [
     company: 'DevFest',
     date: '2024-10-01 12:00:00',
     url: 'https://lu.ma/520vr2td',
-    youTube: 'https://youtube.com/live/gfwHb9dctTs',
+    youTube: 'https://youtube.com/embed/gfwHb9dctTs',
   },
   {
     id: 2,
