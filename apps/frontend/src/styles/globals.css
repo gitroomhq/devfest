@@ -96,3 +96,7 @@ h6 {
 .swal2-popup {
   background: black !important;
 }
+
+.little-black {
+  background: rgba(0, 0, 0, 0.9);
+}

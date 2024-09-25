@@ -1,9 +1,63 @@
-import { signIn, useSession } from "next-auth/react";
-import { useRouter } from "next/router";
+import { signIn, useSession } from 'next-auth/react';
+import { useRouter } from 'next/router';
 
-import { Button } from "@frontend/components/button";
-import { EVENTS } from "@frontend/utils/constants";
+import { Button } from '@frontend/components/button';
+import { events } from '@frontend/utils/events';
+import { FC, useState } from 'react';
+import dynamic from 'next/dynamic';
+import clsx from 'clsx';
 
+const DateComponent = dynamic(
+  () => import('@frontend/components/utils/date.component'),
+  {
+    ssr: false,
+  }
+);
+
+const HideEvent = dynamic(() => import('@frontend/utils/hide.event'), {
+  ssr: false,
+});
+
+const Event: FC<{
+  event: {
+    date: string;
+    name: string;
+    company: string;
+    url: string;
+    id: number;
+  };
+}> = (props) => {
+  const { event } = props;
+  return (
+    <div
+      className={clsx(
+        'relative w-[900px] md:w-[1360px] flex justify-between items-center gap-[28.5px] md:gap-[74px] bg-[#191919] px-5 py-4 md:px-8 md:py-6 rounded-lg md:rounded-xl text-[16px] leading-[19.2px] md:text-[20px] md:leading-[24px]'
+      )}
+    >
+      <HideEvent date={event.date} />
+      <p className="min-w-[60px] max-w-[60px] md:min-w-[100px] md:max-w-[100px]">
+        <DateComponent date={event.date} format="DD/MM/YYYY" />
+      </p>
+      <p className="min-w-[80px] max-w-[80px] md:min-w-[100px] md:max-w-[100px]">
+        <DateComponent date={event.date} format="HH:mm" />
+      </p>
+      <p className="min-w-[360px] max-w-[360px] md:min-w-[500px] md:max-w-[500px]">
+        {event.name}
+      </p>
+      <p className="min-w-[160px] max-w-[160px] md:min-w-[200px] md:max-w-[200px] ">
+        {event.company}
+      </p>
+      <Button
+        size="sm"
+        className="min-w-[86px] max-w-[86px] md:min-w-[100px] md:max-w-[100px]"
+        type="button"
+        onClick={() => window.open(event.url, '_blank')}
+      >
+        RSVP
+      </Button>
+    </div>
+  );
+};
 const Events = () => {
   const session = useSession();
   const router = useRouter();
@@ -41,37 +95,9 @@ const Events = () => {
           </div>
         </div>
         <div className="space-y-2">
-          <div className="w-[900px] md:w-[1360px] flex justify-between items-center gap-[28.5px] md:gap-[74px] bg-[#191919] px-5 py-4 md:px-8 md:py-6 rounded-lg md:rounded-xl text-[16px] leading-[19.2px] md:text-[20px] md:leading-[24px]">
-            <p className="flex justify-center items-center w-full">
-              Coming soon!
-            </p>
-          </div>
-          {/*{EVENTS.map((event, idx) => (*/}
-          {/*  <div*/}
-          {/*    key={idx}*/}
-          {/*    className="w-[900px] md:w-[1360px] flex justify-between items-center gap-[28.5px] md:gap-[74px] bg-[#191919] px-5 py-4 md:px-8 md:py-6 rounded-lg md:rounded-xl text-[16px] leading-[19.2px] md:text-[20px] md:leading-[24px]"*/}
-          {/*  >*/}
-          {/*    <p className="min-w-[60px] max-w-[60px] md:min-w-[100px] md:max-w-[100px]">*/}
-          {/*      {event.date}*/}
-          {/*    </p>*/}
-          {/*    <p className="min-w-[80px] max-w-[80px] md:min-w-[100px] md:max-w-[100px]">*/}
-          {/*      {event.time}*/}
-          {/*    </p>*/}
-          {/*    <p className="min-w-[360px] max-w-[360px] md:min-w-[500px] md:max-w-[500px]">*/}
-          {/*      {event.name}*/}
-          {/*    </p>*/}
-          {/*    <p className="min-w-[160px] max-w-[160px] md:min-w-[200px] md:max-w-[200px] ">*/}
-          {/*      {event.company[0]}*/}
-          {/*      <span className="text-[#B1B4FF]"> {event.company[1]}</span>*/}
-          {/*    </p>*/}
-          {/*    <Button*/}
-          {/*      size="sm"*/}
-          {/*      className="min-w-[86px] max-w-[86px] md:min-w-[100px] md:max-w-[100px]"*/}
-          {/*    >*/}
-          {/*      RSVP*/}
-          {/*    </Button>*/}
-          {/*  </div>*/}
-          {/*))}*/}
+          {events.map((event, idx) => (
+            <Event key={idx} event={event} />
+          ))}
         </div>
       </div>
 
@@ -79,18 +105,18 @@ const Events = () => {
         icon="arrow-up-right"
         className="w-fit"
         onClick={() => {
-          if (session.status === "authenticated") {
-            return router.push("/dashboard");
+          if (session.status === 'authenticated') {
+            return router.push('/dashboard');
           }
-          return signIn("github", {
-            callbackUrl: "/dashboard",
+          return signIn('github', {
+            callbackUrl: '/dashboard',
             redirect: true,
           });
         }}
       >
-        {session.status === "authenticated"
-          ? "Your team"
-          : "Sign up with GitHub"}
+        {session.status === 'authenticated'
+          ? 'Your team'
+          : 'Sign up with GitHub'}
       </Button>
     </section>
   );
