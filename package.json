@@ -5,6 +5,8 @@
   "scripts": {
     "start": "nx run-many -t serve -p frontend backend",
     "build": "nx run-many -t build -p frontend backend",
+    "build:backend": "npx nx build backend --production",
+    "run:backend": "node dist/apps/backend/main.js",
     "test": "nx run-many -t test -p frontend backend",
     "lint": "nx run-many -t lint -p frontend backend"
   },
