@@ -1,1 +1,1 @@
-export const starsBonus = [];
+export const starsBonus = [] as string[];

@@ -4,7 +4,7 @@ import { starsBonus } from '@frontend/utils/stars.bonus';
 
 export const POST = auth(async (req, context) => {
   const body = await req.json();
-  const findRepo = starsBonus.find((p) => body.repository === p);
+  const findRepo = starsBonus.find((p) => body.repository === p)!;
   const bonuses = await prisma.bonuses.findFirst({
     where: {
       identifier: `star-${findRepo?.toLowerCase()}`,

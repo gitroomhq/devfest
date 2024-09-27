@@ -38,6 +38,8 @@ model User {
   invited  User?   @relation("invite", fields: [inviteId], references: [id])
   inviter  User[]  @relation("invite")
 
+  productHunt ProductHunt[]
+
   bonuses   Bonuses[]
   messages  SquadMessages[]
   createdAt DateTime        @default(now())
@@ -142,6 +144,17 @@ model Squad {
   updatedAt         DateTime        @updatedAt
 
   @@index([score])
+}
+
+model ProductHunt {
+  id          String   @id @default(cuid())
+  accessToken String
+  userId      String   @unique()
+  user        User     @relation(fields: [userId], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([userId])
 }
 
 model Repositories {
