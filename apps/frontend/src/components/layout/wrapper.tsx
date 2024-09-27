@@ -13,7 +13,7 @@ import { Toaster } from 'react-hot-toast';
 import dynamic from 'next/dynamic';
 
 const ShowEvent = dynamic(() => import('@frontend/utils/show.event'), {
-  ssr: false
+  ssr: false,
 });
 
 export const Wrapper = ({ children }: { children: ReactNode }) => {
@@ -90,14 +90,28 @@ export const Wrapper = ({ children }: { children: ReactNode }) => {
                   </li>
                 </Link>
               )}
+              {session.status == 'authenticated' &&
+                // @ts-ignore
+                session?.data?.user?.isMod && (
+                  <Link
+                    href="/dashboard/manage"
+                    onClick={() => toggleMenu(true)}
+                  >
+                    <li
+                      className={`cursor-pointer border-[#FFFFFF33] text-[24px] text-white transition duration-300 ease-in active:text-[#FBFF14] hover:text-[#A489FF] md:border-none md:py-[30px] uppercase font-bebas`}
+                    >
+                      Manage Repositories
+                    </li>
+                  </Link>
+                )}
               {session.status == 'authenticated' && (
-                <li
-                  onClick={() => signOut()}
-                  className={`cursor-pointer border-[#FFFFFF33] text-[24px] text-white transition duration-300 ease-in active:text-[#FBFF14] hover:text-[#A489FF] md:border-none md:py-[30px] uppercase font-bebas`}
-                >
-                  Logout
-                </li>
-              )}
+                  <li
+                    onClick={() => signOut()}
+                    className={`cursor-pointer border-[#FFFFFF33] text-[24px] text-white transition duration-300 ease-in active:text-[#FBFF14] hover:text-[#A489FF] md:border-none md:py-[30px] uppercase font-bebas`}
+                  >
+                    Logout
+                  </li>
+                )}
             </ul>
           </div>
           <button className="md:hidden" onClick={() => toggleMenu()}>

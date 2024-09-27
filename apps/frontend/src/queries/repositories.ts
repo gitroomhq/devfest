@@ -17,3 +17,22 @@ export const repositories = async () => {
     nameOwner,
   }));
 };
+
+
+export const repositoriesToApprove = async () => {
+  const list = await prisma.repositories.findMany({
+    where: {
+      sponsored: 0,
+    },
+    orderBy: {
+      createdAt: 'desc',
+    },
+  });
+
+  return list.map(({ allowed, id, sponsored, nameOwner }) => ({
+    allowed,
+    id,
+    sponsored,
+    nameOwner,
+  }));
+};
