@@ -9,9 +9,7 @@ export const metadata: Metadata = {
   description: 'Collaborate with your teammate and win awesome SWAG - Bonuses.',
 };
 
-export default async function Page(params?: {
-  searchParams?: { code?: string };
-}) {
+export default async function Page(params?: any) {
   const user = await auth();
   if (params?.searchParams?.code) {
     await addProductHunt(user?.user?.id!, params.searchParams.code);
