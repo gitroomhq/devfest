@@ -40,7 +40,7 @@ export const POST = auth(async (req, context) => {
   ).json();
 
   // @ts-ignore
-  if (!list.find((p: any) => p.full_name.indexOf(req?.auth?.user.handle) > -1)) {
+  if (!list.find((p: any) => p.full_name.toLowerCase().indexOf(req?.auth?.user.handle.toLowerCase()) > -1)) {
     return Response.json({
       success: false,
     });
