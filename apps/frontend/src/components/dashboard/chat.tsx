@@ -2,6 +2,7 @@
 
 import { Button } from '@frontend/components/button';
 import { FC, useCallback, useEffect, useRef, useState } from 'react';
+import { Novu } from '@novu/node'; 
 import useSWR from 'swr';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
@@ -20,13 +21,35 @@ const SendMessage: FC<{ update: () => void }> = (props) => {
   const submit = useCallback(
     async (e: any) => {
       e.preventDefault();
-      await fetch('/api/dashboard/messages', {
-        method: 'POST',
-        body: JSON.stringify({ message: value }),
-      });
       if (value.length < 3) {
         return alert('You have to type at least 3 characters');
       }
+      
+      const response = await fetch('/api/dashboard/messages', {
+        method: 'POST',
+        body: JSON.stringify({ message: value }),
+      });
+      const newMessage = await response.json();
+
+      // Trigger Novu notification
+      const novu = new Novu(process.env['NOVU_SECRET_KEY']);
+      await novu.trigger('chat-notification', {
+        to: {
+          subscriberId: '<user-subscriber-id>',
+          email: '<user-email>' //optinal
+        },
+        payload: {
+          id: newMessage.id,
+          message: newMessage.message,
+          createdAt: newMessage.createdAt,
+          user: {
+            name: newMessage.user.name,
+            profilePicture: newMessage.user.profilePicture,
+            handle: newMessage.user.handle
+          }
+        }
+      });
+
       setValue('');
       props.update();
     },
