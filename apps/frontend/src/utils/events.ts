@@ -19,7 +19,7 @@ export const events = [
     id: 3,
     name: 'CopilotKit - human in the loop - co-agents',
     company: 'CopilotKit',
-    date: '2024-10-04 12:00:00',
+    date: '2024-10-04 14:00:00',
     url: 'https://lu.ma/p75m0p0l',
     youTube: 'https://youtube.com/embed/F-Yb2Q5IXd8',
   },
