@@ -11,7 +11,7 @@ export const getOnlyRepo = (url: string) => {
     ? urlWithoutGithub.slice(1)
     : urlWithoutGithub;
   const [owner, name] = firstSlash.split('/');
-  return `${owner}/${name}`;
+  return `${owner.toLowerCase()}/${name.toLowerCase()}`;
 };
 
 export const getOwnerAndName = (url: string) => {
@@ -22,7 +22,7 @@ export const getOwnerAndName = (url: string) => {
     ? urlWithoutGithub.slice(1)
     : urlWithoutGithub;
   const [owner, name] = firstSlash.split('/');
-  return { owner, name };
+  return { owner: owner.toLowerCase(), name: name.toLowerCase() };
 };
 
 export class ScoreQueue implements QueueInterface<string> {
@@ -101,8 +101,8 @@ export class ScoreQueue implements QueueInterface<string> {
         },
       });
 
-      const onlyUrl = filterIssues.map((p) => p.url);
-      const onlyRepo = findAllRepos.filter(f => !f.allowed).map((p) => p.nameOwner);
+      const onlyUrl = filterIssues.map((p) => p.url.toLowerCase());
+      const onlyRepo = findAllRepos.filter(f => !f.allowed).map((p) => p.nameOwner.toLowerCase());
 
       const removeNonApprovedRepositories = onlyUrl.filter((p) => {
         return onlyRepo.some((r) => !p.includes(r));
