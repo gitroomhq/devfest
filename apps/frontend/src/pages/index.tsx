@@ -8,14 +8,16 @@ import {
   Swag,
   FAQ,
   Footer,
-} from "@frontend/sections";
-import { FAQ_ITEMS } from "@frontend/utils/constants";
-import { useSession } from "next-auth/react";
-import Seo from "@frontend/components/seo/seo";
+} from '@frontend/sections';
+import { FAQ_ITEMS } from '@frontend/utils/constants';
+import { useSession } from 'next-auth/react';
+import Seo from '@frontend/components/seo/seo';
 import dynamic from 'next/dynamic';
+import Link from 'next/link';
+import React from 'react';
 
 const ShowEvent = dynamic(() => import('@frontend/utils/show.event'), {
-  ssr: false
+  ssr: false,
 });
 
 export default function Home() {
