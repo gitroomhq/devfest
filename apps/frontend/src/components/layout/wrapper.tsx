@@ -11,6 +11,7 @@ import { Footer } from '@frontend/sections';
 import { useSession, signOut } from 'next-auth/react';
 import { Toaster } from 'react-hot-toast';
 import dynamic from 'next/dynamic';
+import clsx from 'clsx';
 
 const ShowEvent = dynamic(() => import('@frontend/utils/show.event'), {
   ssr: false,
@@ -35,7 +36,21 @@ export const Wrapper = ({ children }: { children: ReactNode }) => {
     <>
       <Toaster />
       <ShowEvent />
-      <nav className="absolute z-50 flex items-center justify-between px-5 py-[18px] md:py-0 max-w-[1400px] w-full left-[50%] -translate-x-[50%]">
+      {session.status === 'authenticated' && (
+        <Link
+          href="/dashboard/bonuses"
+          className="cursor-pointer text-black text-[20px] bg-gradient-to-b from-[#FBFF14] to-[#DBB800] group-hover:from-[#FCFF63] group-hover:to-[#FFDD29] text-center p-[3px]"
+        >
+          Check out the latest bonuses 🚀
+        </Link>
+      )}
+      <div />
+      <nav
+        className={clsx(
+          session.status === 'authenticated' && 'top-[23px]',
+          'absolute z-50 flex items-center justify-between px-5 py-[18px] md:py-0 max-w-[1400px] w-full left-[50%] -translate-x-[50%]'
+        )}
+      >
         <div className="mr-[20px]">
           <Link href="/">
             <Image src="/svgs/Logo.svg" alt="" width={40} height={48} />
@@ -82,7 +97,11 @@ export const Wrapper = ({ children }: { children: ReactNode }) => {
                 </Link>
               ))}
               {session.status == 'authenticated' && (
-                <Link className="flex-1" href="/dashboard" onClick={() => toggleMenu(true)}>
+                <Link
+                  className="flex-1"
+                  href="/dashboard"
+                  onClick={() => toggleMenu(true)}
+                >
                   <li
                     className={`cursor-pointer border-[#FFFFFF33] text-[24px] text-white transition duration-300 ease-in active:text-[#FBFF14] hover:text-[#A489FF] md:border-none md:py-[30px] uppercase font-bebas`}
                   >
@@ -105,13 +124,13 @@ export const Wrapper = ({ children }: { children: ReactNode }) => {
                   </Link>
                 )}
               {session.status == 'authenticated' && (
-                  <li
-                    onClick={() => signOut()}
-                    className={`cursor-pointer border-[#FFFFFF33] text-[24px] text-white transition duration-300 ease-in active:text-[#FBFF14] hover:text-[#A489FF] md:border-none md:py-[30px] uppercase font-bebas`}
-                  >
-                    Logout
-                  </li>
-                )}
+                <li
+                  onClick={() => signOut()}
+                  className={`cursor-pointer border-[#FFFFFF33] text-[24px] text-white transition duration-300 ease-in active:text-[#FBFF14] hover:text-[#A489FF] md:border-none md:py-[30px] uppercase font-bebas`}
+                >
+                  Logout
+                </li>
+              )}
             </ul>
           </div>
           <button className="md:hidden" onClick={() => toggleMenu()}>
