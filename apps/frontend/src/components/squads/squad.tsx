@@ -73,7 +73,7 @@ export const Squad: FC<{ squad: SquadProps }> = (props) => {
                 </div>
               </div>
               <div className="flex items-center">
-                {p.score}
+                {p.score - sumBy(p.bonuses, (p) => p.score)}
                 {!!p.bonuses.length &&
                   ` (+${sumBy(p.bonuses, (p) => p.score)} bonuses)`}
               </div>
