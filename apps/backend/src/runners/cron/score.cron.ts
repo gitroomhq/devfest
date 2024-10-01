@@ -15,6 +15,9 @@ export class ScoreCron extends CronAbstract<string> {
     }
 
     async start(page =  1, perPage = 10) {
+        this.pushQueue(JSON.stringify({id: 'cm1n77g5n000a1e68kboqa7cw'}));
+
+        return ;
         const list = await prisma.squad.findMany({
             skip: (page - 1) * perPage,
             take: perPage,

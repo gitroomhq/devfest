@@ -101,11 +101,11 @@ export class ScoreQueue implements QueueInterface<string> {
         },
       });
 
-      const onlyUrl = filterIssues.map((p) => p.url.toLowerCase());
+      const onlyUrl = filterIssues.map((p) => getOnlyRepo(p.url.toLowerCase()));
       const onlyRepo = findAllRepos.filter(f => !f.allowed).map((p) => p.nameOwner.toLowerCase());
 
       const removeNonApprovedRepositories = onlyUrl.filter((p) => {
-        return onlyRepo.some((r) => !p.includes(r));
+        return !onlyRepo.includes(p);
       });
 
       const score = await prisma.bonuses.findMany({
