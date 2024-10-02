@@ -2,6 +2,27 @@ import { auth } from '@frontend/auth';
 import { prisma } from '@db/prisma';
 import { starsBonus } from '@frontend/utils/stars.bonus';
 
+const getStars = async (accessToken: string) => {
+  try {
+    const list = await (
+      await fetch(`https://api.github.com/user/starred`, {
+        method: 'GET',
+        headers: {
+          Authorization: `token ${accessToken}`,
+        },
+      })
+    ).json();
+
+    return list;
+  } catch (e) {
+    return (
+      await fetch(`https://api.github.com/user/starred`, {
+        method: 'GET',
+      })
+    ).json();
+  }
+};
+
 export const POST = auth(async (req, context) => {
   const body = await req.json();
   const findRepo = starsBonus.find((p) => body.repository === p)!;
@@ -30,14 +51,7 @@ export const POST = auth(async (req, context) => {
     },
   });
 
-  const list = await (
-    await fetch(`https://api.github.com/user/starred`, {
-      method: 'GET',
-      headers: {
-        Authorization: `token ${account?.access_token}`,
-      },
-    })
-  ).json();
+  const list = await getStars(account?.access_token!);
 
   if (!list.some((p: any) => starsBonus.includes(p.full_name.toLowerCase()))) {
     return Response.json({

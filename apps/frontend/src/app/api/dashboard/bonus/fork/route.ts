@@ -2,6 +2,27 @@ import { auth } from '@frontend/auth';
 import { prisma } from '@db/prisma';
 import { starsBonus } from '@frontend/utils/stars.bonus';
 
+const getForks = async (accessToken: string, findRepo: string) => {
+  try {
+    const list = await (
+      await fetch(`https://api.github.com/repos/${findRepo}/forks`, {
+        method: 'GET',
+        headers: {
+          Authorization: `token ${accessToken}`,
+        },
+      })
+    ).json();
+
+    return list;
+  } catch (e) {
+    return (
+      await fetch(`https://api.github.com/repos/${findRepo}/forks`, {
+        method: 'GET',
+      })
+    ).json();
+  }
+};
+
 export const POST = auth(async (req, context) => {
   const body = await req.json();
   const findRepo = starsBonus.find((p) => body.repository === p);
@@ -30,17 +51,15 @@ export const POST = auth(async (req, context) => {
     },
   });
 
-  const list = await (
-    await fetch(`https://api.github.com/repos/${findRepo}/forks`, {
-      method: 'GET',
-      headers: {
-        Authorization: `token ${account?.access_token}`,
-      },
-    })
-  ).json();
+  const list = await getForks(account?.access_token!, findRepo!);
 
-  // @ts-ignore
-  if (!list.some((p: any) => p.owner.login.toLowerCase() === req?.auth?.user.handle.toLowerCase())) {
+  if (
+    !list.some(
+      (p: any) =>
+        // @ts-ignore
+        p.owner.login.toLowerCase() === req?.auth?.user.handle.toLowerCase()
+    )
+  ) {
     return Response.json({
       success: false,
     });
