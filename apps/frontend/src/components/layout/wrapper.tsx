@@ -39,7 +39,7 @@ export const Wrapper = ({ children }: { children: ReactNode }) => {
       {session.status === 'authenticated' && (
         <Link
           href="/dashboard/bonuses"
-          className="cursor-pointer text-black text-[20px] bg-gradient-to-b from-[#FBFF14] to-[#DBB800] group-hover:from-[#FCFF63] group-hover:to-[#FFDD29] text-center p-[3px]"
+          className="cursor-pointer text-white text-[20px] bg-gradient-to-b from-[#ff0000] to-[#970000] group-hover:from-[#FCFF63] group-hover:to-[#FFDD29] text-center p-[3px]"
         >
           Check out the latest bonuses 🚀
         </Link>
