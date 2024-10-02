@@ -24,6 +24,7 @@ export interface SquadProps {
     handle: string;
     image: string;
     score: number;
+    bonus: number;
     prs: string;
     bonuses: {
       id: string;
@@ -53,10 +54,20 @@ export const Squad: FC<{ squad: SquadProps }> = (props) => {
             >
               <div className="text-left flex items-center">{index + 1}</div>
               <div className="text-left flex items-center">
-                <Image width={50} height={50} src={p.image} alt={p.name} className="rounded-full" />
+                <Image
+                  width={50}
+                  height={50}
+                  src={p.image}
+                  alt={p.name}
+                  className="rounded-full"
+                />
               </div>
               <div className="flex items-center gap-[10px]">
-                <Link href={`https://github.com/${p.handle}`} target="_blank" className="flex flex-col">
+                <Link
+                  href={`https://github.com/${p.handle}`}
+                  target="_blank"
+                  className="flex flex-col"
+                >
                   <div>{p.name}</div>
                   {p.banned && <div className="text-red-500">Banned</div>}
                 </Link>
@@ -73,9 +84,8 @@ export const Squad: FC<{ squad: SquadProps }> = (props) => {
                 </div>
               </div>
               <div className="flex items-center">
-                {p.score - sumBy(p.bonuses, (p) => p.score)}
-                {!!p.bonuses.length &&
-                  ` (+${sumBy(p.bonuses, (p) => p.score)} bonuses)`}
+                {p.score - p.bonus}
+                {!!p.bonus && ` (+${p.bonus} bonuses)`}
               </div>
             </div>
           ))}

@@ -27,6 +27,7 @@ model User {
   squad          Squad?          @relation(fields: [squadId], references: [id])
   ownedSquads    Squad[]         @relation("ownedSquads")
   score          Int             @default(0)
+  bonus          Int             @default(0)
   prs            String          @default("[]")
   handle         String?
   profilePicture String?

@@ -123,6 +123,7 @@ export class ScoreQueue implements QueueInterface<string> {
         },
         data: {
           score: memberScore,
+          bonus: sum
         },
       });
 
