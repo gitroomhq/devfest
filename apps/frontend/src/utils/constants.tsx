@@ -395,6 +395,7 @@ export const FOOTER_MENU = [
     items: [
       { name: "Gitroom", path: "https://gitroom.com" },
       { name: "Postiz", path: "https://postiz.com" },
+      { name: "Novu", path: "https://novu.com?utm_source=devfest" },
     ],
   },
 ];
