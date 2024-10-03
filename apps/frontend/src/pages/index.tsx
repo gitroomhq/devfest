@@ -13,10 +13,13 @@ import { FAQ_ITEMS } from '@frontend/utils/constants';
 import { useSession } from 'next-auth/react';
 import Seo from '@frontend/components/seo/seo';
 import dynamic from 'next/dynamic';
-import Link from 'next/link';
 import React from 'react';
 
 const ShowEvent = dynamic(() => import('@frontend/utils/show.event'), {
+  ssr: false,
+});
+
+const ShowBonuses = dynamic(() => import('@frontend/utils/show.bonuses'), {
   ssr: false,
 });
 
@@ -29,6 +32,7 @@ export default function Home() {
         description="Contribute code to AI repositories, meet new people, Participate in events and win awesome SWAG."
       />
       <ShowEvent />
+      <ShowBonuses />
       <Header />
       <Hero />
       <Sponsors />

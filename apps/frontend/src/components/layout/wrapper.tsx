@@ -17,6 +17,10 @@ const ShowEvent = dynamic(() => import('@frontend/utils/show.event'), {
   ssr: false,
 });
 
+const ShowBonuses = dynamic(() => import('@frontend/utils/show.bonuses'), {
+  ssr: false,
+});
+
 export const Wrapper = ({ children }: { children: ReactNode }) => {
   const pathName = usePathname();
   const session = useSession();
@@ -36,6 +40,7 @@ export const Wrapper = ({ children }: { children: ReactNode }) => {
     <>
       <Toaster />
       <ShowEvent />
+      <ShowBonuses />
       {session.status === 'authenticated' && (
         <Link
           href="/dashboard/bonuses"
