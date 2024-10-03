@@ -16,6 +16,8 @@
     "@nestjs/common": "^10.0.2",
     "@nestjs/core": "^10.0.2",
     "@nestjs/platform-express": "^10.0.2",
+    "@novu/node": "^2.0.1",
+    "@novu/react": "^2.3.0",
     "@octokit/graphql": "^7.0.1",
     "@prisma/client": "^5.19.0",
     "@sweetalert2/themes": "^5.0.18",
@@ -49,7 +51,8 @@
     "sweetalert2": "^11.14.0",
     "swr": "^2.2.5",
     "tslib": "^2.3.0",
-    "use-debounce": "^10.0.3"
+    "use-debounce": "^10.0.3",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@auth/prisma-adapter": "^2.4.2",

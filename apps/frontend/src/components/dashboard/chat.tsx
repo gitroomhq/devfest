@@ -20,13 +20,15 @@ const SendMessage: FC<{ update: () => void }> = (props) => {
   const submit = useCallback(
     async (e: any) => {
       e.preventDefault();
+      if (value.length < 3) {
+        return alert('You have to type at least 3 characters');
+      }
+
       await fetch('/api/dashboard/messages', {
         method: 'POST',
         body: JSON.stringify({ message: value }),
       });
-      if (value.length < 3) {
-        return alert('You have to type at least 3 characters');
-      }
+
       setValue('');
       props.update();
     },
@@ -128,7 +130,10 @@ export function Chat() {
                   <br />
                   <br />
                   Make sure you create your{' '}
-                  <a href="/dashboard/ticket" className="underline hover:font-bold">
+                  <a
+                    href="/dashboard/ticket"
+                    className="underline hover:font-bold"
+                  >
                     personal ticket
                   </a>{' '}
                   and share it.

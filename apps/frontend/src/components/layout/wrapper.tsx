@@ -11,6 +11,7 @@ import { Footer } from '@frontend/sections';
 import { useSession, signOut } from 'next-auth/react';
 import { Toaster } from 'react-hot-toast';
 import dynamic from 'next/dynamic';
+import { NotificationBell } from '../notification/novu';
 import clsx from 'clsx';
 
 const ShowEvent = dynamic(() => import('@frontend/utils/show.event'), {
@@ -128,6 +129,15 @@ export const Wrapper = ({ children }: { children: ReactNode }) => {
                     </li>
                   </Link>
                 )}
+              {session.status == 'authenticated' && (
+                <li
+                  className={`cursor-pointer transition duration-300 ease-in active:text-[#FBFF14] hover:text-[#A489FF] hidden md:block md:border-none md:py-[30px]`}
+                >
+                  <NotificationBell
+                    userId={session?.data?.user?.id as string}
+                  />
+                </li>
+              )}
               {session.status == 'authenticated' && (
                 <li
                   onClick={() => signOut()}
