@@ -2,6 +2,7 @@
 
 import { useSession } from 'next-auth/react';
 import { ChangeEventHandler, FC, useCallback, useState } from 'react';
+import clsx from 'clsx';
 
 const RemoveFromSquad: FC<{ id: string; approve: boolean }> = (props) => {
   const session = useSession();
@@ -29,7 +30,7 @@ const RemoveFromSquad: FC<{ id: string; approve: boolean }> = (props) => {
   return (
     <div>
       <select
-        className="bg-black p-[10px] rounded-[10px]"
+        className={clsx("p-[10px] rounded-[10px]", initialValue ? 'bg-green-300' : 'bg-red-600')}
         onChange={changeState}
       >
         <option value="approve" selected={initialValue}>
