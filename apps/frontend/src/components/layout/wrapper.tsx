@@ -40,7 +40,7 @@ export const Wrapper = ({ children }: { children: ReactNode }) => {
     <>
       <Toaster />
       <ShowEvent />
-      <ShowBonuses />
+      {session.status === 'authenticated' && <ShowBonuses />}
       {session.status === 'authenticated' && (
         <Link
           href="/dashboard/bonuses"

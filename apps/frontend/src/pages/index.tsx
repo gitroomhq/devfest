@@ -32,7 +32,7 @@ export default function Home() {
         description="Contribute code to AI repositories, meet new people, Participate in events and win awesome SWAG."
       />
       <ShowEvent />
-      <ShowBonuses />
+      {session.status === 'authenticated' && <ShowBonuses />}
       <Header />
       <Hero />
       <Sponsors />
