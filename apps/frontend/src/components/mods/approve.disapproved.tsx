@@ -30,7 +30,7 @@ const RemoveFromSquad: FC<{ id: string; approve: boolean }> = (props) => {
   return (
     <div>
       <select
-        className={clsx("p-[10px] rounded-[10px]", initialValue ? 'bg-green-300' : 'bg-red-600')}
+        className={clsx("p-[10px] rounded-[10px]", initialValue ? 'bg-green-300 text-black' : 'bg-red-600 text-white')}
         onChange={changeState}
       >
         <option value="approve" selected={initialValue}>
