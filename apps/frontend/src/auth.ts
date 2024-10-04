@@ -29,7 +29,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         token.refresh_token = account.refresh_token;
 
         if (trigger !== 'signUp' && user?.id && account?.access_token) {
-          prisma.account.updateMany({
+          await prisma.account.updateMany({
             where: {
               userId: user.id,
             },
