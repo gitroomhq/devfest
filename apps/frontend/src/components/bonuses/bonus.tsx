@@ -144,7 +144,7 @@ export function Bonuses({
           {['star', 'fork'].flatMap((p, indexTop) =>
             starsBonus.flatMap((bonus, index) => (
               <div
-                key={`${p}_${index}`}
+                key={`${p}_${indexTop}_${index}_${bonus}`}
                 className="grid grid-cols-[30px,1fr,180px,180px] bg-[#191919] rounded-[12px] h-[72px] px-[32px]"
               >
                 <div className="text-left flex items-center">
@@ -174,7 +174,7 @@ export function Bonuses({
                 <div className="text-left flex items-center">1 point</div>
                 <div className="text-left flex items-center">
                   {data?.body?.bonuses.some(
-                    (a: any) => a.identifier === `${p}-${bonus}`
+                    (a: any) => a.identifier.toLowerCase() === `${p}-${bonus}`.toLowerCase()
                   ) ? (
                     `Claimed`
                   ) : (
