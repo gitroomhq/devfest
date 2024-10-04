@@ -4,6 +4,7 @@
   "license": "MIT",
   "scripts": {
     "start": "nx run-many -t serve -p frontend backend",
+    "start:frontend": "nx run-many -t serve -p frontend",
     "build": "nx run-many -t build -p frontend backend",
     "build:backend": "npx nx build backend --production",
     "run:backend": "node dist/apps/backend/main.js",

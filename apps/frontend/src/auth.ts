@@ -1,12 +1,12 @@
-import NextAuth from "next-auth";
-import GitHub from "next-auth/providers/github";
-import { PrismaAdapter } from "@auth/prisma-adapter";
+import NextAuth from 'next-auth';
+import GitHub from 'next-auth/providers/github';
+import { PrismaAdapter } from '@auth/prisma-adapter';
 import { prisma } from '@db/prisma';
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   adapter: PrismaAdapter(prisma),
   providers: [GitHub],
-  session: { strategy: "jwt" },
+  session: { strategy: 'jwt' },
   cookies: {
     pkceCodeVerifier: {
       name: 'next-auth.pkce.code_verifier',
@@ -20,8 +20,26 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   },
   callbacks: {
     async jwt({ token, user, trigger, session, account }) {
-      if (trigger === "update" && session?.color) {
+      if (trigger === 'update' && session?.color) {
         token.color = session.color;
+      }
+      if (user && account) {
+        token.access_token = account.access_token;
+        token.expires_at = account.expires_at;
+        token.refresh_token = account.refresh_token;
+
+        if (trigger !== 'signUp' && user?.id && account?.access_token) {
+          prisma.account.updateMany({
+            where: {
+              userId: user.id,
+            },
+            data: {
+              access_token: account.access_token,
+              expires_at: account.expires_at,
+              refresh_token: account.refresh_token,
+            },
+          });
+        }
       }
       if (user) {
         // User is available during sign-in
@@ -38,31 +56,33 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         token.isMod = user.isMod;
       }
 
-      if (trigger === "signUp") {
-        const [key, country] = process.env.MAILCHIMP_API_KEY!.split("-");
-        const [name, lastName] = user?.name?.split(" ")!;
+      if (trigger === 'signUp') {
+        const [key, country] = process.env.MAILCHIMP_API_KEY!.split('-');
+        const [name, lastName] = user?.name?.split(' ')!;
 
         await fetch(
           `https://${country}.api.mailchimp.com/3.0/lists/${process.env.MAILCHIMP_LIST_ID}/members`,
           {
-            method: "POST",
+            method: 'POST',
             headers: {
-              Authorization: `Basic ${Buffer.from("nevo:" + key).toString("base64")}`,
-              "Content-Type": "application/json",
+              Authorization: `Basic ${Buffer.from('nevo:' + key).toString(
+                'base64'
+              )}`,
+              'Content-Type': 'application/json',
             },
             body: JSON.stringify({
               email_address: user.email,
-              status: "subscribed",
+              status: 'subscribed',
               merge_fields: {
-                FNAME: name || "",
-                LNAME: lastName || "",
+                FNAME: name || '',
+                LNAME: lastName || '',
               },
             }),
-          },
+          }
         );
 
         const { login, avatar_url } = await (
-          await fetch("https://api.github.com/user", {
+          await fetch('https://api.github.com/user', {
             headers: {
               Authorization: `Bearer ${account?.access_token}`,
             },
@@ -104,16 +124,16 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     },
     authorized: async ({ auth, request }) => {
       // Logged in users are authenticated, otherwise redirect to login page
-      if (!auth && request.url.indexOf("/api") > -1) {
+      if (!auth && request.url.indexOf('/api') > -1) {
         return Response.json(
-          { message: "You have to login" },
+          { message: 'You have to login' },
           {
             status: 401,
-          },
+          }
         );
       }
       if (!auth) {
-        return Response.redirect(new URL("/", request.url));
+        return Response.redirect(new URL('/', request.url));
       }
 
       return true;

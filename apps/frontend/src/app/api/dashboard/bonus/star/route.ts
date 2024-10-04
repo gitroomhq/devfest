@@ -4,16 +4,14 @@ import { starsBonus } from '@frontend/utils/stars.bonus';
 
 const getStars = async (accessToken: string) => {
   try {
-    const list = await (
-      await fetch(`https://api.github.com/user/starred`, {
-        method: 'GET',
-        headers: {
-          Authorization: `token ${accessToken}`,
-        },
-      })
-    ).json();
+    const list = await fetch(`https://api.github.com/user/starred`, {
+      method: 'GET',
+      headers: {
+        Authorization: `token ${accessToken}`,
+      },
+    });
 
-    return list;
+    return list.json();
   } catch (e) {
     return (
       await fetch(`https://api.github.com/user/starred`, {
