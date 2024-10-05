@@ -5,7 +5,17 @@ import { prisma } from '@db/prisma';
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   adapter: PrismaAdapter(prisma),
-  providers: [GitHub],
+  providers: [
+    GitHub({
+      clientId: process.env.AUTH_GITHUB_ID!,
+      clientSecret: process.env.AUTH_GITHUB_SECRET!,
+      authorization: {
+        params: {
+          scope: 'read:user user:email public_repo',
+        },
+      },
+    }),
+  ],
   session: { strategy: 'jwt' },
   cookies: {
     pkceCodeVerifier: {
