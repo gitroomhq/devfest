@@ -4,13 +4,14 @@ import { Button } from '@frontend/components/button';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { useSession } from 'next-auth/react';
 import toast from 'react-hot-toast';
-import { starsBonus } from '@frontend/utils/stars.bonus';
+import { frozen, starsBonus } from '@frontend/utils/stars.bonus';
 import { useCallback, useState } from 'react';
 import useSWR from 'swr';
 import GithubSvg from '@frontend/components/svgs/GithubSvg';
 import { capitalize } from 'lodash';
 import { productHuntBonus } from '@frontend/utils/product.hunt.bonus';
 import { useRouter } from 'next/navigation';
+import clsx from 'clsx';
 
 export function Bonuses({
   phKey,
@@ -145,7 +146,7 @@ export function Bonuses({
             starsBonus.flatMap((bonus, index) => (
               <div
                 key={`${p}_${indexTop}_${index}_${bonus}`}
-                className="grid grid-cols-[30px,1fr,180px,180px] bg-[#191919] rounded-[12px] h-[72px] px-[32px]"
+                className={clsx("grid grid-cols-[30px,1fr,180px,180px] bg-[#191919] rounded-[12px] h-[72px] px-[32px]", frozen.indexOf(bonus) > -1 && 'pointer-events-none opacity-45')}
               >
                 <div className="text-left flex items-center">
                   {starsBonus.length * indexTop + index + 1}
@@ -166,7 +167,7 @@ export function Bonuses({
                   <div>
                     <strong>{capitalize(p)}</strong>
                     {<>&nbsp;</>}
-                    {bonus}
+                    {bonus} {frozen.indexOf(bonus) > -1 ? <span className="text-red-600">Locked at the moment</span> : ''}
                     <br />
                     (if you already gave a {p}, remove the {p} and {p} again)
                   </div>
