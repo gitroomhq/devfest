@@ -143,7 +143,7 @@ export function Bonuses({
             </div>
           </div>
           {['star', 'fork'].flatMap((p, indexTop) =>
-            starsBonus.flatMap((bonus, index) => (
+            starsBonus.reverse().flatMap((bonus, index) => (
               <div
                 key={`${p}_${indexTop}_${index}_${bonus}`}
                 className={clsx("grid grid-cols-[30px,1fr,180px,180px] bg-[#191919] rounded-[12px] h-[72px] px-[32px]", frozen.indexOf(bonus) > -1 && 'pointer-events-none opacity-45')}
