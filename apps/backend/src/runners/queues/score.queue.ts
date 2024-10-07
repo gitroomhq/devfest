@@ -115,7 +115,7 @@ export class ScoreQueue implements QueueInterface<string> {
       });
 
       const sum = score.reduce((acc, curr) => acc + curr.score, 0);
-      const memberScore = sum + removeNonApprovedRepositories.length;
+      const memberScore = sum + (removeNonApprovedRepositories.length * 3);
 
       await prisma.user.update({
         where: {
