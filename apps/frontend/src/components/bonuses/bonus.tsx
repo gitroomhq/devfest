@@ -142,58 +142,75 @@ export function Bonuses({
               </CopyToClipboard>
             </div>
           </div>
-          {['star', 'fork'].flatMap((p, indexTop) =>
-            starsBonus.slice(0).reverse().map((bonus, index) => (
-              <div
-                key={`${p}_${indexTop}_${index}_${bonus}`}
-                className={clsx(index === 0 && 'animate-pulse relative', "grid grid-cols-[30px,1fr,180px,180px] bg-[#191919] rounded-[12px] h-[72px] px-[32px]", frozen.indexOf(bonus) > -1 && 'pointer-events-none opacity-45')}
-              >
-                {index === 0 && (
-                  <div className="pointer-events-none absolute left-0 top-0 w-full h-full bg-green-500/30 -z-[1] rounded-[12px]" />
-                )}
-                <div className="text-left flex items-center">
-                  {starsBonus.length * indexTop + index + 1}
-                </div>
+          {starsBonus
+            .slice(0)
+            .reverse()
+            .map((bonus, index) =>
+              ['star', 'fork'].flatMap((p, indexTop) => (
                 <div
-                  className="text-left flex items-center cursor-pointer gap-[10px]"
-                  onClick={() =>
-                    window.open(
-                      `https://github.com/${bonus}`,
-                      '_blank',
-                      'noreferrer noopener'
-                    )
-                  }
-                >
-                  <div className="h-full pt-[15px]">
-                    <GithubSvg color="white" />
-                  </div>
-                  <div>
-                    <strong>{capitalize(p)}</strong>
-                    {<>&nbsp;</>}
-                    {bonus} {frozen.indexOf(bonus) > -1 ? <span className="text-red-600">Locked at the moment</span> : ''}
-                    <br />
-                    (if you already gave a {p}, remove the {p} and {p} again)
-                  </div>
-                </div>
-                <div className="text-left flex items-center">1 point</div>
-                <div className="text-left flex items-center">
-                  {data?.body?.bonuses.some(
-                    (a: any) => a.identifier.toLowerCase() === `${p}-${bonus}`.toLowerCase()
-                  ) ? (
-                    `Claimed`
-                  ) : (
-                    <Button
-                      disabled={loading}
-                      onClick={bonusStar(bonus, p)}
-                      size="sm"
-                    >
-                      Claim
-                    </Button>
+                  key={`${p}_${indexTop}_${index}_${bonus}`}
+                  className={clsx(
+                    index === 0 && 'animate-pulse relative',
+                    'grid grid-cols-[30px,1fr,180px,180px] bg-[#191919] rounded-[12px] h-[72px] px-[32px]',
+                    frozen.indexOf(bonus) > -1 &&
+                      'pointer-events-none opacity-45'
                   )}
+                >
+                  {index === 0 && (
+                    <div className="pointer-events-none absolute left-0 top-0 w-full h-full bg-green-500/30 -z-[1] rounded-[12px]" />
+                  )}
+                  <div className="text-left flex items-center">
+                    {2 * index + 2 + indexTop}
+                  </div>
+                  <div
+                    className="text-left flex items-center cursor-pointer gap-[10px]"
+                    onClick={() =>
+                      window.open(
+                        `https://github.com/${bonus}`,
+                        '_blank',
+                        'noreferrer noopener'
+                      )
+                    }
+                  >
+                    <div className="h-full pt-[15px]">
+                      <GithubSvg color="white" />
+                    </div>
+                    <div>
+                      <strong>{capitalize(p)}</strong>
+                      {<>&nbsp;</>}
+                      {bonus}{' '}
+                      {frozen.indexOf(bonus) > -1 ? (
+                        <span className="text-red-600">
+                          Locked at the moment
+                        </span>
+                      ) : (
+                        ''
+                      )}
+                      <br />
+                      (if you already gave a {p}, remove the {p} and {p} again)
+                    </div>
+                  </div>
+                  <div className="text-left flex items-center">1 point</div>
+                  <div className="text-left flex items-center">
+                    {data?.body?.bonuses.some(
+                      (a: any) =>
+                        a.identifier.toLowerCase() ===
+                        `${p}-${bonus}`.toLowerCase()
+                    ) ? (
+                      `Claimed`
+                    ) : (
+                      <Button
+                        disabled={loading}
+                        onClick={bonusStar(bonus, p)}
+                        size="sm"
+                      >
+                        Claim
+                      </Button>
+                    )}
+                  </div>
                 </div>
-              </div>
-            ))
-          )}
+              ))
+            )}
           {productHuntBonus.map((bonus, index) => (
             <div
               key={`bonus`}
