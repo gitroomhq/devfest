@@ -142,6 +142,54 @@ export function Bonuses({
               </CopyToClipboard>
             </div>
           </div>
+          {productHuntBonus.map((bonus, index) => (
+            <div
+              key={`bonus`}
+              className="grid grid-cols-[30px,1fr,180px,180px] bg-[#191919] rounded-[12px] h-[72px] px-[32px]"
+            >
+              <div className="text-left flex items-center">
+                {index + 2}
+              </div>
+              <div
+                className="text-left flex items-center cursor-pointer gap-[10px]"
+                onClick={() =>
+                  window.open(
+                    `https://www.producthunt.com/posts/${bonus.id}`,
+                    '_blank',
+                    'noreferrer noopener'
+                  )
+                }
+              >
+                <div>
+                  <strong>Upvote {bonus.name} on Product Hunt</strong>
+                  <br />
+                  <div className="text-red-400 animate-bounce">
+                    (This is a 24-hours bonus, hurry up!)
+                  </div>
+                </div>
+              </div>
+              <div className="text-left flex items-center">1 point</div>
+              <div className="text-left flex items-center">
+                {data?.body?.bonuses.some(
+                  (a: any) => a.identifier === `producthunt-${bonus.id}`
+                ) ? (
+                  `Claimed`
+                ) : !dataPh.isAuthenticated ? (
+                  <Button disabled={loading} size="sm" onClick={connect}>
+                    Connect Product Hunt
+                  </Button>
+                ) : (
+                  <Button
+                    disabled={loading}
+                    size="sm"
+                    onClick={checkVote(bonus.id)}
+                  >
+                    Check Vote
+                  </Button>
+                )}
+              </div>
+            </div>
+          ))}
           {starsBonus
             .slice(0)
             .reverse()
@@ -160,7 +208,7 @@ export function Bonuses({
                     <div className="pointer-events-none absolute left-0 top-0 w-full h-full bg-green-500/30 -z-[1] rounded-[12px]" />
                   )}
                   <div className="text-left flex items-center">
-                    {2 * index + 2 + indexTop}
+                    {productHuntBonus.length + 2 * index + 2 + indexTop}
                   </div>
                   <div
                     className="text-left flex items-center cursor-pointer gap-[10px]"
@@ -211,54 +259,6 @@ export function Bonuses({
                 </div>
               ))
             )}
-          {productHuntBonus.map((bonus, index) => (
-            <div
-              key={`bonus`}
-              className="grid grid-cols-[30px,1fr,180px,180px] bg-[#191919] rounded-[12px] h-[72px] px-[32px]"
-            >
-              <div className="text-left flex items-center">
-                {starsBonus.length * 2 + index + 1}
-              </div>
-              <div
-                className="text-left flex items-center cursor-pointer gap-[10px]"
-                onClick={() =>
-                  window.open(
-                    `https://www.producthunt.com/posts/${bonus.id}`,
-                    '_blank',
-                    'noreferrer noopener'
-                  )
-                }
-              >
-                <div>
-                  <strong>Upvote {bonus.name} on Product Hunt</strong>
-                  <br />
-                  <div className="text-red-400 animate-bounce">
-                    (This is a 24-hours bonus, hurry up!)
-                  </div>
-                </div>
-              </div>
-              <div className="text-left flex items-center">1 point</div>
-              <div className="text-left flex items-center">
-                {data?.body?.bonuses.some(
-                  (a: any) => a.identifier === `producthunt-${bonus.id}`
-                ) ? (
-                  `Claimed`
-                ) : !dataPh.isAuthenticated ? (
-                  <Button disabled={loading} size="sm" onClick={connect}>
-                    Connect Product Hunt
-                  </Button>
-                ) : (
-                  <Button
-                    disabled={loading}
-                    size="sm"
-                    onClick={checkVote(bonus.id)}
-                  >
-                    Check Vote
-                  </Button>
-                )}
-              </div>
-            </div>
-          ))}
         </div>
       </div>
     </div>
