@@ -1,1 +1,6 @@
-export const productHuntBonus = [] as Array<{name: string, id: string}>;
+export const productHuntBonus = [
+  {
+    id: 'llmware',
+    name: 'LLMware',
+  },
+] as Array<{ name: string; id: string }>;
