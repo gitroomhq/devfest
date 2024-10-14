@@ -161,7 +161,7 @@ export function Bonuses({
                 }
               >
                 <div>
-                  <strong>Upvote {bonus.name} on Product Hunt</strong>
+                  <strong>Upvote {bonus.name} on Product Hunt add a comment also</strong>
                   <br />
                   <div className="text-red-400 animate-bounce">
                     (This is a 24-hours bonus, hurry up!)
