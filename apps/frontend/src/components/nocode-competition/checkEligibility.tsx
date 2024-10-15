@@ -33,7 +33,7 @@ const CheckEligibility: FC<{ id: string }> = (props) => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          id: auth?.data?.user?.id!,
+          id: props.id
         }),
       })
     ).json();
