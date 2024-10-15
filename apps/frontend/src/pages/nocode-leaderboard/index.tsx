@@ -49,7 +49,7 @@ export const getStaticProps = async () => {
   const leaderBoard = await getLeaderBoardNoCode();
   return {
     props: {
-      leaderBoard: leaderBoard,
+      leaderBoard: leaderBoard.slice(500),
     },
     revalidate: 120,
   };
