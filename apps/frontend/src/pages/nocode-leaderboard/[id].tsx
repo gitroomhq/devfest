@@ -30,7 +30,7 @@ export default function Squads(props: { user: UserProps }) {
           </h1>
 
           <div className="text-center text-[20px]">
-            Help ${props.user.name} to win awesome swag by starring and forking repos on
+            Help {props.user.name} to win awesome swag by starring and forking repos on
             GitHub.
           </div>
 
