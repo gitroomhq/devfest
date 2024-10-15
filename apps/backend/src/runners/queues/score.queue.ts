@@ -116,6 +116,11 @@ export class ScoreQueue implements QueueInterface<string> {
 
       const sum = score.reduce((acc, curr) => acc + curr.score, 0);
       const memberScore = sum + (removeNonApprovedRepositories.length * 3);
+      const nodeCodeScore = await prisma.nocodeBonus.count({
+        where: {
+          bonusToUserId: member.id,
+        }
+      })
 
       await prisma.user.update({
         where: {
@@ -123,6 +128,7 @@ export class ScoreQueue implements QueueInterface<string> {
         },
         data: {
           score: memberScore,
+          noCodeScore: nodeCodeScore,
           bonus: sum
         },
       });
