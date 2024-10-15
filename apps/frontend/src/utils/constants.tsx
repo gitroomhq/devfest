@@ -373,7 +373,7 @@ export const FAQ_ITEMS = [
       <>We are aware that contributing code might be hard! We have started an additional competition called the no-code competition.<br />
       All you need to do is to bring as many people as possible to authenticate with their GitHub.<br />
       Each GitHub authentication will result in 1 bonus point.< br/>
-      By the end of the competition the top individuals will win awesome swag! (different from the code competition)
+      By the end of the competition the top 30 individuals will win awesome swag! (different from the code competition)
       </>,
   },
 ];
