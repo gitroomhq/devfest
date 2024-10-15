@@ -2,9 +2,6 @@
 
 import React, { FC, useState } from "react";
 
-import { Button } from "@frontend/components/button";
-import { FAQ_ITEMS } from "@frontend/utils/constants";
-
 const FAQItem: FC<{ question: string; answer: any; spliter: boolean }> = (
   props,
 ) => {

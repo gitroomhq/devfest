@@ -1,300 +1,300 @@
 export const HEADER_MENU = [
-  { name: "Leaderboard", path: "/leaderboard" },
-  { name: "Events", path: "/#events" },
-  { name: "Ticket", path: "#ticket" },
-  { name: "Swag", path: "/#swag" },
-  { name: "FAQ", path: "/#faq" },
-  { name: "Repositories to contribute", path: "/repositories" },
+  { name: 'Leaderboard', path: '/leaderboard' },
+  { name: 'Events', path: '/#events' },
+  { name: 'Ticket', path: '#ticket' },
+  { name: 'Swag', path: '/#swag' },
+  { name: 'FAQ', path: '/#faq' },
+  { name: 'Repositories to contribute', path: '/repositories' },
 ];
 
 export const SMALLER_SPONSORS = [
   {
-    name: "Digger",
+    name: 'Digger',
     logoImg: {
-      src: require("@frontend/images/sponsors/Digger.svg"),
-      alt: "",
+      src: require('@frontend/images/sponsors/Digger.svg'),
+      alt: '',
       width: 124,
       height: 40,
     },
     logoImgMobile: {
-      src: require("@frontend/images/sponsors/Digger-mobile.svg"),
-      alt: "",
+      src: require('@frontend/images/sponsors/Digger-mobile.svg'),
+      alt: '',
       width: 94,
       height: 30,
     },
-    path: "https://digger.dev",
+    path: 'https://digger.dev',
   },
   {
-    name: "Composio",
+    name: 'Composio',
     logoImg: {
-      src: require("@frontend/images/sponsors/composio.svg"),
-      alt: "",
+      src: require('@frontend/images/sponsors/composio.svg'),
+      alt: '',
       width: 124,
       height: 40,
     },
     logoImgMobile: {
-      src: require("@frontend/images/sponsors/composio_mob.svg"),
-      alt: "",
+      src: require('@frontend/images/sponsors/composio_mob.svg'),
+      alt: '',
       width: 94,
       height: 30,
     },
-    path: "https://composio.dev",
+    path: 'https://composio.dev',
   },
   {
-    name: "Classiq",
+    name: 'Classiq',
     logoImg: {
-      src: require("@frontend/images/sponsors/classiq.svg"),
-      alt: "",
+      src: require('@frontend/images/sponsors/classiq.svg'),
+      alt: '',
       width: 124,
       height: 40,
     },
     logoImgMobile: {
-      src: require("@frontend/images/sponsors/classiq_mob.svg"),
-      alt: "",
+      src: require('@frontend/images/sponsors/classiq_mob.svg'),
+      alt: '',
       width: 94,
       height: 30,
     },
-    path: "https://classiq.io",
+    path: 'https://classiq.io',
   },
   {
-    name: "ToolJet",
+    name: 'ToolJet',
     logoImg: {
-      src: require("@frontend/images/sponsors/tooljet.svg"),
-      alt: "",
+      src: require('@frontend/images/sponsors/tooljet.svg'),
+      alt: '',
       width: 124,
       height: 40,
     },
     logoImgMobile: {
-      src: require("@frontend/images/sponsors/tooljet_mob.svg"),
-      alt: "",
+      src: require('@frontend/images/sponsors/tooljet_mob.svg'),
+      alt: '',
       width: 94,
       height: 30,
     },
-    path: "https://tooljet.io",
+    path: 'https://tooljet.io',
   },
   {
-    name: "Taipy",
+    name: 'Taipy',
     logoImg: {
-      src: require("@frontend/images/sponsors/taipy.svg"),
-      alt: "",
+      src: require('@frontend/images/sponsors/taipy.svg'),
+      alt: '',
       width: 124,
       height: 40,
     },
     logoImgMobile: {
-      src: require("@frontend/images/sponsors/taipy_mob.svg"),
-      alt: "",
+      src: require('@frontend/images/sponsors/taipy_mob.svg'),
+      alt: '',
       width: 94,
       height: 30,
     },
-    path: "https://taipy.io",
+    path: 'https://taipy.io',
   },
 ];
 
 export const SPONSORS = [
   {
-    name: "Llmware",
+    name: 'Llmware',
     logoImg: {
-      src: require("@frontend/images/sponsors/LLMware.svg"),
-      alt: "",
+      src: require('@frontend/images/sponsors/LLMware.svg'),
+      alt: '',
       width: 261,
       height: 80,
     },
     logoImgMobile: {
-      src: require("@frontend/images/sponsors/LLMware-mobile.svg"),
-      alt: "",
+      src: require('@frontend/images/sponsors/LLMware-mobile.svg'),
+      alt: '',
       width: 173,
       height: 52,
     },
-    path: "https://llmware.ai/",
+    path: 'https://llmware.ai/',
   },
   {
-    name: "Keep",
+    name: 'Keep',
     logoImg: {
-      src: require("@frontend/images/sponsors/Keep.svg"),
-      alt: "",
+      src: require('@frontend/images/sponsors/Keep.svg'),
+      alt: '',
       width: 153,
       height: 80,
     },
     logoImgMobile: {
-      src: require("@frontend/images/sponsors/Keep-mobile.svg"),
-      alt: "",
+      src: require('@frontend/images/sponsors/Keep-mobile.svg'),
+      alt: '',
       width: 98,
       height: 52,
     },
-    path: "https://www.keephq.dev/",
+    path: 'https://www.keephq.dev/',
   },
   {
-    name: "CopilotKit",
+    name: 'CopilotKit',
     logoImg: {
-      src: require("@frontend/images/sponsors/Copilotkit.svg"),
-      alt: "",
+      src: require('@frontend/images/sponsors/Copilotkit.svg'),
+      alt: '',
       width: 229,
       height: 80,
     },
     logoImgMobile: {
-      src: require("@frontend/images/sponsors/Copilotkit-mobile.svg"),
-      alt: "",
+      src: require('@frontend/images/sponsors/Copilotkit-mobile.svg'),
+      alt: '',
       width: 150,
       height: 52,
     },
-    path: "https://www.copilotkit.ai/",
+    path: 'https://www.copilotkit.ai/',
   },
   {
-    name: "Julep",
+    name: 'Julep',
     logoImg: {
-      src: require("@frontend/images/sponsors/julep.svg"),
-      alt: "",
+      src: require('@frontend/images/sponsors/julep.svg'),
+      alt: '',
       width: 153,
       height: 80,
     },
     logoImgMobile: {
-      src: require("@frontend/images/sponsors/julep-mobile.svg"),
-      alt: "",
+      src: require('@frontend/images/sponsors/julep-mobile.svg'),
+      alt: '',
       width: 101,
       height: 52,
     },
-    path: "https://julep.ai/",
+    path: 'https://julep.ai/',
   },
   {
-    name: "Traceloop",
+    name: 'Traceloop',
     logoImg: {
-      src: require("@frontend/images/sponsors/Traceloop.svg"),
-      alt: "",
+      src: require('@frontend/images/sponsors/Traceloop.svg'),
+      alt: '',
       width: 240,
       height: 80,
     },
     logoImgMobile: {
-      src: require("@frontend/images/sponsors/Traceloop-mobile.svg"),
-      alt: "",
+      src: require('@frontend/images/sponsors/Traceloop-mobile.svg'),
+      alt: '',
       width: 160,
       height: 52,
     },
-    path: "https://www.traceloop.com/",
+    path: 'https://www.traceloop.com/',
   },
 ];
 
 export const EVENTS = [
   {
-    date: "Oct 3",
-    time: "1:00 PM",
-    name: "How to Hacktoberfest: Navigating Open Source Contributions for Beginners and Veterans",
-    company: ["Felix", "@Hanko"],
-    rsvp: "",
+    date: 'Oct 3',
+    time: '1:00 PM',
+    name: 'How to Hacktoberfest: Navigating Open Source Contributions for Beginners and Veterans',
+    company: ['Felix', '@Hanko'],
+    rsvp: '',
   },
   {
-    date: "Oct 3",
-    time: "1:00 PM",
-    name: "The Future of Web Authentication – Passkeys and Their Benefits When Building Apps",
-    company: ["Felix", "@Hanko"],
-    rsvp: "",
+    date: 'Oct 3',
+    time: '1:00 PM',
+    name: 'The Future of Web Authentication – Passkeys and Their Benefits When Building Apps',
+    company: ['Felix', '@Hanko'],
+    rsvp: '',
   },
   {
-    date: "Oct 3",
-    time: "1:00 PM",
-    name: "Building a Mini-Unsplash Clone",
-    company: ["Felix", "@Hanko"],
-    rsvp: "",
+    date: 'Oct 3',
+    time: '1:00 PM',
+    name: 'Building a Mini-Unsplash Clone',
+    company: ['Felix', '@Hanko'],
+    rsvp: '',
   },
   {
-    date: "Oct 3",
-    time: "1:00 PM",
-    name: "How to Hacktoberfest: Navigating Open Source Contributions for Beginners and Veterans",
-    company: ["Felix", "@Hanko"],
-    rsvp: "",
+    date: 'Oct 3',
+    time: '1:00 PM',
+    name: 'How to Hacktoberfest: Navigating Open Source Contributions for Beginners and Veterans',
+    company: ['Felix', '@Hanko'],
+    rsvp: '',
   },
   {
-    date: "Oct 3",
-    time: "1:00 PM",
-    name: "The Future of Web Authentication – Passkeys and Their Benefits When Building Apps",
-    company: ["Felix", "@Hanko"],
-    rsvp: "",
+    date: 'Oct 3',
+    time: '1:00 PM',
+    name: 'The Future of Web Authentication – Passkeys and Their Benefits When Building Apps',
+    company: ['Felix', '@Hanko'],
+    rsvp: '',
   },
   {
-    date: "Oct 3",
-    time: "1:00 PM",
-    name: "Building a Mini-Unsplash Clone",
-    company: ["Felix", "@Hanko"],
-    rsvp: "",
+    date: 'Oct 3',
+    time: '1:00 PM',
+    name: 'Building a Mini-Unsplash Clone',
+    company: ['Felix', '@Hanko'],
+    rsvp: '',
   },
   {
-    date: "Oct 3",
-    time: "1:00 PM",
-    name: "How to Hacktoberfest: Navigating Open Source Contributions for Beginners and Veterans",
-    company: ["Felix", "@Hanko"],
-    rsvp: "",
+    date: 'Oct 3',
+    time: '1:00 PM',
+    name: 'How to Hacktoberfest: Navigating Open Source Contributions for Beginners and Veterans',
+    company: ['Felix', '@Hanko'],
+    rsvp: '',
   },
   {
-    date: "Oct 3",
-    time: "1:00 PM",
-    name: "The Future of Web Authentication – Passkeys and Their Benefits When Building Apps",
-    company: ["Felix", "@Hanko"],
-    rsvp: "",
+    date: 'Oct 3',
+    time: '1:00 PM',
+    name: 'The Future of Web Authentication – Passkeys and Their Benefits When Building Apps',
+    company: ['Felix', '@Hanko'],
+    rsvp: '',
   },
   {
-    date: "Oct 3",
-    time: "1:00 PM",
-    name: "Building a Mini-Unsplash Clone",
-    company: ["Felix", "@Hanko"],
-    rsvp: "",
+    date: 'Oct 3',
+    time: '1:00 PM',
+    name: 'Building a Mini-Unsplash Clone',
+    company: ['Felix', '@Hanko'],
+    rsvp: '',
   },
   {
-    date: "Oct 3",
-    time: "1:00 PM",
-    name: "The Future of Web Authentication – Passkeys and Their Benefits When Building Apps",
-    company: ["Felix", "@Hanko"],
-    rsvp: "",
+    date: 'Oct 3',
+    time: '1:00 PM',
+    name: 'The Future of Web Authentication – Passkeys and Their Benefits When Building Apps',
+    company: ['Felix', '@Hanko'],
+    rsvp: '',
   },
   {
-    date: "Oct 3",
-    time: "1:00 PM",
-    name: "Building a Mini-Unsplash Clone",
-    company: ["Felix", "@Hanko"],
-    rsvp: "",
+    date: 'Oct 3',
+    time: '1:00 PM',
+    name: 'Building a Mini-Unsplash Clone',
+    company: ['Felix', '@Hanko'],
+    rsvp: '',
   },
 ];
 
 export const TICKETS = [
   {
-    name: ["Larry", "Fisher"],
-    githubName: "Github",
-    color: "#FF4836",
-    no: "0000000001",
-    buttonGradient: "from-[#FF8D68] to-[#FF6F41]",
+    name: ['Larry', 'Fisher'],
+    githubName: 'Github',
+    color: '#FF4836',
+    no: '0000000001',
+    buttonGradient: 'from-[#FF8D68] to-[#FF6F41]',
   },
   {
-    name: ["Seth", "Patterson"],
-    githubName: "Github",
-    color: "#00B976",
-    no: "0000000001",
-    buttonGradient: "from-[#65FFC7] to-[#10EE9E]",
+    name: ['Seth', 'Patterson'],
+    githubName: 'Github',
+    color: '#00B976',
+    no: '0000000001',
+    buttonGradient: 'from-[#65FFC7] to-[#10EE9E]',
   },
   {
-    name: ["Ryan", "Thomas"],
-    githubName: "Github",
-    color: "#F64F63",
-    no: "0000000001",
-    buttonGradient: "from-[#FF8097] to-[#FF485E]",
+    name: ['Ryan', 'Thomas'],
+    githubName: 'Github',
+    color: '#F64F63',
+    no: '0000000001',
+    buttonGradient: 'from-[#FF8097] to-[#FF485E]',
   },
   {
-    name: ["Phillip", "Hernandez"],
-    githubName: "Github",
-    color: "#00A8B3",
-    no: "0000000001",
-    buttonGradient: "from-[#81F7FF] to-[#32F3FF]",
+    name: ['Phillip', 'Hernandez'],
+    githubName: 'Github',
+    color: '#00A8B3',
+    no: '0000000001',
+    buttonGradient: 'from-[#81F7FF] to-[#32F3FF]',
   },
   {
-    name: ["James", "White"],
-    githubName: "Github",
-    color: "#F69D18",
-    no: "0000000001",
-    buttonGradient: "from-[#FFEC87] to-[#FFDE2E]",
+    name: ['James', 'White'],
+    githubName: 'Github',
+    color: '#F69D18',
+    no: '0000000001',
+    buttonGradient: 'from-[#FFEC87] to-[#FFDE2E]',
   },
   {
-    name: ["Robert", "Thompson"],
-    githubName: "Github",
-    color: "#367AFF",
-    no: "0000000001",
-    buttonGradient: "from-[#8FB5FF] to-[#5690FF]",
+    name: ['Robert', 'Thompson'],
+    githubName: 'Github',
+    color: '#367AFF',
+    no: '0000000001',
+    buttonGradient: 'from-[#8FB5FF] to-[#5690FF]',
   },
 ];
 
@@ -302,105 +302,124 @@ export const FAQ_ITEMS = [
   {
     question: "What's in it for me?",
     answer:
-      "Meet amazing new people, get more involved with the open-source community and win awesome swag!",
+      'Meet amazing new people, get more involved with the open-source community and win awesome swag!',
   },
   {
-    question: "When is the event happening?",
+    question: 'When is the event happening?',
     answer:
-      "Registration is open! The event will start between 1st - 31st October 2024",
+      'Registration is open! The event will start between 1st - 31st October 2024',
   },
   {
-    question: "How does it work?",
+    question: 'How does it work?',
     answer:
-      "Register to the DevFest using your GitHub, Join a squad or get assigned to a random squad, contribute code to AI repositories and get Swag!",
+      'Register to the DevFest using your GitHub, Join a squad or get assigned to a random squad, contribute code to AI repositories and get Swag!',
   },
   {
-    question: "How many members can join a squad?",
+    question: 'How many members can join a squad?',
     answer:
       'Each squad can have a maximum of 5 members. If you can\'t find all 5, you can always turn on the "Allow random people to join my squad"',
   },
   {
-    question: "How do we calculate the score?",
+    question: 'How do we calculate the score?',
     answer:
-      "Every hour we will calculate every squad member MERGED PR for AI repositories and sum them all together. By the end of the event, the top 20 squads will win awesome swag! The calculation method can be found here",
+      'Every hour we will calculate every squad member MERGED PR for AI repositories and sum them all together. By the end of the event, the top 20 squads will win awesome swag! The calculation method can be found here',
   },
   {
-    question: "What are the rules?",
-    answer:
+    question: 'What are the rules?',
+    answer: (
       <ul className="listerin">
         <li>Please respect each other. We are all here for the same goal</li>
         <li>DSA repositories are not allowed</li>
-        <li>You can only contribute to AI-based repositories or repositories that have AI features</li>
-        <li>Only repositories with more than 200 stars are acceptable to reduce spam</li>
+        <li>
+          You can only contribute to AI-based repositories or repositories that
+          have AI features
+        </li>
+        <li>
+          Only repositories with more than 200 stars are acceptable to reduce
+          spam
+        </li>
         <li>You can only contribute to repositories created before October</li>
-        <li>3 Mods can disqualify any teams or members if they decide that the contested does not comply with the Rule of Reason</li>
+        <li>
+          3 Mods can disqualify any teams or members if they decide that the
+          contested does not comply with the Rule of Reason
+        </li>
         <li>Avoid Mockery of any kind</li>
         <li>The rules can be changed at any time</li>
-      </ul>,
+      </ul>
+    ),
   },
   {
-    question: "How many people will get swag?",
+    question: 'How many people will get swag?',
     answer:
-      "Each day at midnight we will calculate every squad member MERGED PR and sum them all together. By the end of the event, the top 20 squads will win awesome swag! (each squad member)",
+      'Each day at midnight we will calculate every squad member MERGED PR and sum them all together. By the end of the event, the top 20 squads will win awesome swag! (each squad member)',
   },
   {
-    question: "Can I register for both Hacktoberfest and DevFest AI?",
+    question: 'Can I register for both Hacktoberfest and DevFest AI?',
     answer:
-      "Yes, and even recommended! Each contribution will be counted for both Hacktoberfest and DevFest AI",
+      'Yes, and even recommended! Each contribution will be counted for both Hacktoberfest and DevFest AI',
   },
   {
-    question: "How long will it take to receive the swag?",
+    question: 'How long will it take to receive the swag?',
     answer:
-      "We assume that it will reach everybody within 60-180 days after the event ends.",
+      'We assume that it will reach everybody within 60-180 days after the event ends.',
   },
   {
-    question: "Do I need to pay duty for the SWAG?",
-    answer: "No! We are taking care of it.",
+    question: 'Do I need to pay duty for the SWAG?',
+    answer: 'No! We are taking care of it.',
+  },
+  {
+    question: 'What is the no-code competition?',
+    answer:
+      <>We are aware that contributing code might be hard! We have started an additional competition called the no-code competition.<br />
+      All you need to do is to bring as many people as possible to authenticate with their GitHub.<br />
+      Each GitHub authentication will result in 1 bonus point.< br/>
+      By the end of the competition the top 30 teams will win awesome swag! (different from the code competition)
+      </>,
   },
 ];
 
 export const FOOTER_MENU = [
   {
-    title: "Gold Sponsors",
+    title: 'Gold Sponsors',
     items: [
-      { name: "Llmware", path: "https://llmware.ai/" },
-      { name: "CopilotKit", path: "https://copilotkit.ai/" },
-      { name: "Traceloop", path: "https://traceloop.com/" },
-      { name: "Keep", path: "https://keephq.dev/" },
-      { name: "Julep", path: "https://julep.ai/" },
+      { name: 'Llmware', path: 'https://llmware.ai/' },
+      { name: 'CopilotKit', path: 'https://copilotkit.ai/' },
+      { name: 'Traceloop', path: 'https://traceloop.com/' },
+      { name: 'Keep', path: 'https://keephq.dev/' },
+      { name: 'Julep', path: 'https://julep.ai/' },
     ],
   },
   {
-    title: "Silver Sponsors",
+    title: 'Silver Sponsors',
     items: [
-      { name: "Taipy", path: "https://taipy.io/" },
-      { name: "Digger.dev", path: "https://digger.dev" },
-      { name: "Composio", path: "https://composio.dev" },
-      { name: "Classiq", path: "https://classiq.io" },
-      { name: "ToolJet", path: "https://tooljet.io" },
+      { name: 'Taipy', path: 'https://taipy.io/' },
+      { name: 'Digger.dev', path: 'https://digger.dev' },
+      { name: 'Composio', path: 'https://composio.dev' },
+      { name: 'Classiq', path: 'https://classiq.io' },
+      { name: 'ToolJet', path: 'https://tooljet.io' },
     ],
   },
   {
-    title: "Company",
+    title: 'Company',
     items: [
-      { name: "Leaderboard", path: "/leaderboard" },
-      { name: "Events", path: "/#events" },
-      { name: "Ticket", path: "/#ticket" },
-      { name: "Swag", path: "/#swag" },
-      { name: "FAQ", path: "/#faq" },
+      { name: 'Leaderboard', path: '/leaderboard' },
+      { name: 'Events', path: '/#events' },
+      { name: 'Ticket', path: '/#ticket' },
+      { name: 'Swag', path: '/#swag' },
+      { name: 'FAQ', path: '/#faq' },
     ],
   },
   {
-    title: "Externals",
+    title: 'Externals',
     items: [
-      { name: "Gitroom", path: "https://gitroom.com" },
-      { name: "Postiz", path: "https://postiz.com" },
-      { name: "Novu", path: "https://novu.com?utm_source=devfest" },
+      { name: 'Gitroom', path: 'https://gitroom.com' },
+      { name: 'Postiz', path: 'https://postiz.com' },
+      { name: 'Novu', path: 'https://novu.com?utm_source=devfest' },
     ],
   },
 ];
 
-export const PEPPERMINT_URL = "https://peppermint.id";
-export const GITHUB_URL = "";
-export const DISCORD_URL = "";
-export const TWITTER_URL = "";
+export const PEPPERMINT_URL = 'https://peppermint.id';
+export const GITHUB_URL = '';
+export const DISCORD_URL = '';
+export const TWITTER_URL = '';
