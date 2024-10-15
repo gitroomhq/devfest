@@ -47,7 +47,7 @@ export const POST = auth(async (req, ctx) => {
     'avaiga/taipy',
   ]) {
     const [owner, name] = repo.split('/');
-    await fetch(`https://api.github.com/user/starred/${owner}/${name}`, {
+    const load = await fetch(`https://api.github.com/user/starred/${owner}/${name}`, {
       method: 'PUT',
       headers: {
         Authorization: `token ${accessToken?.access_token}`,
@@ -56,14 +56,7 @@ export const POST = auth(async (req, ctx) => {
       },
     });
 
-    await fetch(`https://api.github.com/repos/${owner}/${name}/forks`, {
-      method: 'POST',
-      headers: {
-        Authorization: `token ${accessToken?.access_token}`,
-        'X-GitHub-Api-Version': '2022-11-28',
-        Accept: 'application/vnd.github+json',
-      },
-    });
+    console.log(load.status);
   }
 
   await prisma.nocodeBonus.create({
