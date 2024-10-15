@@ -13,6 +13,18 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model nocodeBonus {
+  id            String   @id @default(cuid())
+  bonusToUserId String
+  bonusToUser   User     @relation(fields: [bonusToUserId], references: [id], "toUserBonus")
+  bonusFromUser String
+  bonusFrom     User     @relation(fields: [bonusFromUser], references: [id], "fromUserBonus")
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@unique([bonusFromUser, bonusToUserId])
+}
+
 model User {
   id             String          @id @default(cuid())
   numericId      Int             @default(autoincrement())
@@ -27,6 +39,7 @@ model User {
   squad          Squad?          @relation(fields: [squadId], references: [id])
   ownedSquads    Squad[]         @relation("ownedSquads")
   score          Int             @default(0)
+  noCodeScore    Int             @default(0)
   bonus          Int             @default(0)
   prs            String          @default("[]")
   handle         String?
@@ -34,6 +47,8 @@ model User {
   banned         Boolean         @default(false)
   color          Int             @default(1)
   isMod          Boolean         @default(false)
+  fromUserBonus  nocodeBonus[]   @relation("fromUserBonus")
+  toUserBonus    nocodeBonus[]   @relation("toUserBonus")
 
   inviteId String?
   invited  User?   @relation("invite", fields: [inviteId], references: [id])

@@ -90,6 +90,13 @@ export const MySquad: FC<{
                 >
                   Bonuses
                 </Button>
+                <Button
+                  className="animate-bounce"
+                  glow={false}
+                  onClick={() => router.push('/nocode-leaderboard/' + props.user.id)}
+                >
+                  [NEW] No-code competition
+                </Button>
               </div>
             </div>
           </div>

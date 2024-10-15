@@ -1,8 +1,8 @@
-import Image from "next/image";
-import { signIn, useSession } from "next-auth/react";
+import Image from 'next/image';
+import { signIn, useSession } from 'next-auth/react';
 
-import { Button } from "@frontend/components/button";
-import { useRouter } from "next/router";
+import { Button } from '@frontend/components/button';
+import { useRouter } from 'next/router';
 
 const Hero = () => {
   const session = useSession();
@@ -40,29 +40,39 @@ const Hero = () => {
               DevFest AI
             </p>
             <h5 className="max-w-[500px]">
-              Contribute code to AI repositories, meet new people,
-              Participate in events and win awesome <strong>SWAG.</strong>
+              Contribute code to AI repositories, meet new people, Participate
+              in events and win awesome <strong>SWAG.</strong>
             </h5>
           </div>
-          {session.status !== "loading" && (
+          <div className="flex gap-[10px]">
+            {session.status !== 'loading' && (
+              <Button
+                icon="arrow-up-right"
+                className="w-fit"
+                onClick={() => {
+                  if (session.status === 'authenticated') {
+                    return router.push('/dashboard');
+                  }
+                  return signIn('github', {
+                    callbackUrl: '/dashboard',
+                    redirect: true,
+                  });
+                }}
+              >
+                {session.status === 'authenticated'
+                  ? 'Move to your team'
+                  : 'Sign up with GitHub'}
+              </Button>
+            )}
             <Button
               icon="arrow-up-right"
               className="w-fit"
-              onClick={() => {
-                if (session.status === "authenticated") {
-                  return router.push("/dashboard");
-                }
-                return signIn("github", {
-                  callbackUrl: "/dashboard",
-                  redirect: true
-                });
-              }}
+              variant="tertiary"
+              onClick={() => router.push('/nocode-leaderboard')}
             >
-              {session.status === "authenticated"
-                ? "Move to your team"
-                : "Sign up with GitHub"}
+              No code competition
             </Button>
-          )}
+          </div>
         </div>
       </div>
     </div>
