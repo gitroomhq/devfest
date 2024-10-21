@@ -6,5 +6,6 @@ export const starsBonus = [
   'avaiga/taipy',
   'llmware-ai/llmware',
   'Classiq/classiq-library',
+  'Classiq/classiq-library',
 ] as string[];
-export const frozen = ['copilotkit/copilotkit'];
+export const frozen = ['traceloop/openllmetry'];
