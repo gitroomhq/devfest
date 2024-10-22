@@ -8,4 +8,4 @@ export const starsBonus = [
   'Classiq/classiq-library',
   'traceloop/openllmetry',
 ] as string[];
-export const frozen = ['copilotkit/copilotkit'];
+export const frozen = [];
