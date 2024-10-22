@@ -37,7 +37,6 @@ export const POST = auth(async (req, ctx) => {
     'gitroomhq/postiz-app',
     'llmware-ai/llmware',
     'keephq/keep',
-    'CopilotKit/CopilotKit',
     'julep-ai/julep',
     'traceloop/openllmetry',
     'diggerhq/digger',
