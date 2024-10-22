@@ -67,7 +67,7 @@ export const events = [
     id: 9,
     name: 'Advanced techniques for monitoring production RAG applications',
     company: 'Traceloop',
-    date: '2024-10-24 12:00:00',
+    date: '2024-10-23 12:00:00',
     url: 'https://lu.ma/d1lb9wei',
     youTube: 'https://youtube.com/embed/IZKn6zeFmps'
   },
