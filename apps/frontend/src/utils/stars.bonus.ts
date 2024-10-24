@@ -10,4 +10,4 @@ export const starsBonus = [
   'diggerhq/digger',
   'ToolJet/ToolJet'
 ] as string[];
-export const frozen = [];
+export const frozen = [] as string[];
