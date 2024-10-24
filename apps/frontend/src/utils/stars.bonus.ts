@@ -7,6 +7,7 @@ export const starsBonus = [
   'llmware-ai/llmware',
   'Classiq/classiq-library',
   'traceloop/openllmetry',
-  'diggerhq/digger'
+  'diggerhq/digger',
+  'ToolJet/ToolJet'
 ] as string[];
 export const frozen = [];
