@@ -3,7 +3,7 @@ import { prisma } from '@db/prisma';
 export const getLeaderBoardNoCode = async () => {
   return prisma.user.findMany({
     where: {
-      banned: false,
+      bannedNoCode: false,
     },
     select: {
       id: true,

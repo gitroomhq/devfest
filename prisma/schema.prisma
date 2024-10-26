@@ -45,6 +45,7 @@ model User {
   handle         String?
   profilePicture String?
   banned         Boolean         @default(false)
+  bannedNoCode   Boolean         @default(false)
   color          Int             @default(1)
   isMod          Boolean         @default(false)
   fromUserBonus  nocodeBonus[]   @relation("fromUserBonus")
