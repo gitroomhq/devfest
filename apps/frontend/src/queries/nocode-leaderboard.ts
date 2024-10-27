@@ -8,7 +8,7 @@ export const getLeaderBoardNoCode = async () => {
     select: {
       id: true,
       name: true,
-      noCodeScore: true,
+      noCodeScore: true
     },
     orderBy: {
       noCodeScore: 'desc',

@@ -1,4 +1,4 @@
-import { prisma } from "@db/prisma";
+import { prisma } from '@db/prisma';
 
 export const getUserById = (id: string) => {
   return prisma.user.findFirst({
@@ -10,6 +10,17 @@ export const getUserById = (id: string) => {
       handle: true,
       noCodeScore: true,
       name: true,
+      toUserBonus: {
+        select: {
+          bonusFrom: {
+            select: {
+              id: true,
+              name: true,
+              handle: true,
+            },
+          },
+        },
+      },
     },
   });
 };
