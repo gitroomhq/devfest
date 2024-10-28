@@ -8,6 +8,7 @@ export const starsBonus = [
   'Classiq/classiq-library',
   'traceloop/openllmetry',
   'diggerhq/digger',
-  'ToolJet/ToolJet'
+  'ToolJet/ToolJet',
+  'keephq/keep'
 ] as string[];
 export const frozen = [] as string[];
