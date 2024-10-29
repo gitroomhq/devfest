@@ -9,6 +9,7 @@ export const starsBonus = [
   'traceloop/openllmetry',
   'diggerhq/digger',
   'ToolJet/ToolJet',
-  'keephq/keep'
+  'keephq/keep',
+  'novuhq/novu'
 ] as string[];
 export const frozen = [] as string[];
