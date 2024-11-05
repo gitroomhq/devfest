@@ -66,6 +66,62 @@ export const WrapperForm: FC<{ prizes: any[] }> = (props) => {
 
   return (
     <>
+      <div className="w-full mx-auto mb-[20px]" data-id={1}>
+        <div
+          className="bg-red-50 border-l-4 border-red-500 p-4 rounded-md shadow-md"
+          data-id={2}
+        >
+          <div className="flex items-center mb-3" data-id={3}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width={24}
+              height={24}
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={2}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="lucide lucide-triangle-alert h-6 w-6 text-red-500 mr-2"
+              data-id={4}
+            >
+              <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
+              <path d="M12 9v4" />
+              <path d="M12 17h.01" />
+            </svg>
+            <div className="text-lg font-semibold text-red-700" data-id={5}>
+              Important Swag Claim Information
+            </div>
+          </div>
+          <ul
+            className="text-red-700 space-y-2 whitespace-pre-wrap"
+            data-id={6}
+          >
+            <li data-id={7} className="whitespace-pre-wrap">
+              - Swag must be claimed by the competition winner only.{'\n'}
+              Sending to friends will invalidate your claim.
+            </li>
+            <li data-id={8}>
+              - Do not use college addresses for delivery. Use a personal
+              address{'\n'}
+              where you can receive packages.
+            </li>
+            <li data-id={9}>
+              - Choose your swag size carefully. Size changes are not possible
+              {'\n'}
+              after submission.
+            </li>
+            <li data-id={10}>
+              - Double-check your delivery address. It cannot be changed once
+              submitted.
+            </li>
+            <li data-id={10}>
+              - Some countries have a {'"'}KYC{'"'} validation, if the delivery doesn{"'"}t match the owner, you won{"'"}t be able to claim it
+            </li>
+          </ul>
+        </div>
+      </div>
+
       <div className="mb-7">
         Select Prizes to claim:
         {prizes.map((winner: any, index: number) => (
