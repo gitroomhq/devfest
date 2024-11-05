@@ -3,9 +3,19 @@ import Seo from '@frontend/components/seo/seo';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { getLeaderBoardNoCode } from '@frontend/queries/nocode-leaderboard';
+import dynamic from 'next/dynamic';
+
+const BanUser = dynamic(() => import('@frontend/components/mods/ban.user'), {
+  ssr: false,
+});
 
 export default function Index(props: {
-  leaderBoard: { id: string; name: string; noCodeScore: number }[];
+  leaderBoard: {
+    id: string;
+    name: string;
+    noCodeScore: number;
+    bannedNoCode: boolean;
+  }[];
 }) {
   const { leaderBoard } = props;
   const router = useRouter();
@@ -33,8 +43,11 @@ export default function Index(props: {
               className="cursor-pointer grid grid-cols-[100px,1fr,100px] bg-[#191919] hover:bg-[#333333] rounded-[12px] h-[72px] px-[32px]"
             >
               <div className="text-left flex items-center">{index + 1}</div>
-              <div className="flex items-center">
+              <div className="flex items-center gap-[20px]">
                 <Link href={`/nocode-leaderboard/${p.id}`}>{p.name}</Link>
+                <div onClick={e => e.stopPropagation()}>
+                  <BanUser banned={p.bannedNoCode} id={p.id} />
+                </div>
               </div>
               <div className="flex items-center">{p.noCodeScore}</div>
             </div>

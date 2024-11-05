@@ -10,6 +10,7 @@ export interface User {
   name: string;
   handle: string;
   owner: boolean;
+  isWinner: boolean;
   squad: {
     id: string;
     name: string;

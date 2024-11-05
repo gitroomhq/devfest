@@ -7,8 +7,6 @@ import { TeamDetails } from '@frontend/components/dashboard/team.details';
 import { User } from '@frontend/components/dashboard/main';
 import { Members } from '@frontend/components/dashboard/members';
 import { JoinUs } from '@frontend/components/dashboard/join.us';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
-import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 import clsx from 'clsx';
 
@@ -56,47 +54,51 @@ export const MySquad: FC<{
                 </div>
               </div>
               <div className="flex gap-[12px]">
-                <CopyToClipboard
-                  text={'https://devfest.ai/invite/' + props.user.squad.id}
-                  onCopy={() => {
-                    toast.success('Copied to clipboard', {
-                      icon: '👏',
-                    });
-                  }}
-                >
-                  <Button
-                    className="wrapinv w-[360px]"
-                    variant="secondary"
-                    glow={false}
-                  >
-                    <div className="inv" />{' '}
-                  </Button>
-                </CopyToClipboard>
+                {/*<CopyToClipboard*/}
+                {/*  text={'https://devfest.ai/invite/' + props.user.squad.id}*/}
+                {/*  onCopy={() => {*/}
+                {/*    toast.success('Copied to clipboard', {*/}
+                {/*      icon: '👏',*/}
+                {/*    });*/}
+                {/*  }}*/}
+                {/*>*/}
+                {/*  <Button*/}
+                {/*    className="wrapinv w-[360px]"*/}
+                {/*    variant="secondary"*/}
+                {/*    glow={false}*/}
+                {/*  >*/}
+                {/*    <div className="inv" />{' '}*/}
+                {/*  </Button>*/}
+                {/*</CopyToClipboard>*/}
 
-                {props.user.owner && (
+                {/*{props.user.owner && (*/}
+                {/*  <Button*/}
+                {/*    glow={false}*/}
+                {/*    variant="secondary"*/}
+                {/*    onClick={() => setShowDetails(true)}*/}
+                {/*  >*/}
+                {/*    Squad Settings*/}
+                {/*  </Button>*/}
+                {/*)}*/}
+
+                {/*<Button*/}
+                {/*  className="animate-bounce"*/}
+                {/*  glow={false}*/}
+                {/*  onClick={() => router.push('/dashboard/bonuses')}*/}
+                {/*>*/}
+                {/*  Bonuses*/}
+                {/*</Button>*/}
+                {props.user.isWinner && (
                   <Button
+                    className="animate-bounce"
                     glow={false}
-                    variant="secondary"
-                    onClick={() => setShowDetails(true)}
+                    onClick={() =>
+                      router.push('/dashboard/claim')
+                    }
                   >
-                    Squad Settings
+                    You have won awesome prizes! Claim them!
                   </Button>
                 )}
-
-                <Button
-                  className="animate-bounce"
-                  glow={false}
-                  onClick={() => router.push('/dashboard/bonuses')}
-                >
-                  Bonuses
-                </Button>
-                <Button
-                  className="animate-bounce"
-                  glow={false}
-                  onClick={() => router.push('/nocode-leaderboard/' + props.user.id)}
-                >
-                  [NEW] No-code competition
-                </Button>
               </div>
             </div>
           </div>

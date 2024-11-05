@@ -57,10 +57,29 @@ model User {
 
   productHunt ProductHunt[]
 
-  bonuses   Bonuses[]
+  bonuses Bonuses[]
+  winners Winners[]
+
   messages  SquadMessages[]
   createdAt DateTime        @default(now())
   updatedAt DateTime        @updatedAt
+}
+
+model Winners {
+  id            String    @id @default(cuid())
+  month         Int
+  year          Int
+  userId        String
+  lastDateClaim DateTime
+  type          String
+  claimed       DateTime?
+  user          User      @relation(fields: [userId], references: [id])
+
+  @@unique([month, year, userId, type])
+  @@index([month])
+  @@index([year])
+  @@index([userId])
+  @@index([claimed])
 }
 
 model Bonuses {

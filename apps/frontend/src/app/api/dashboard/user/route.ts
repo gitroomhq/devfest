@@ -1,5 +1,5 @@
-import { auth } from "@frontend/auth";
-import { prisma } from "@db/prisma";
+import { auth } from '@frontend/auth';
+import { prisma } from '@db/prisma';
 
 export const GET = auth(async function GET(req) {
   return Response.json({
@@ -17,6 +17,11 @@ export const GET = auth(async function GET(req) {
     owner: !!(await prisma.squad.findFirst({
       where: {
         ownerId: req?.auth?.user?.id,
+      },
+    })),
+    isWinner: !!(await prisma.winners.count({
+      where: {
+        userId: req?.auth?.user?.id,
       },
     })),
     squad: await prisma.squad.findFirst({
