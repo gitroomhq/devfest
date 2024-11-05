@@ -81,6 +81,7 @@ export const WrapperForm: FC<{ prizes: any[] }> = (props) => {
             </div>
             <div className="ml-2">
               {winner.type === 'code' && 'Competition Winner'}
+              {winner.type === 'nocode' && 'NoCode Winner'}
               {winner.type === 'giveaway' && 'Competition Giveaway'}- Expires on{' '}
               {moment
                 .utc(winner.lastDateClaim)

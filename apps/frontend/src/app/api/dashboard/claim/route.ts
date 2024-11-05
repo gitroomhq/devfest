@@ -66,7 +66,7 @@ export const POST = auth(async (req, context) => {
           shipping_zip: body.shipping_zip,
           shipping_country: body.shipping_country,
           shirt_size: body.shirt_size,
-          company_name: win.type === 'code' ? 'Code' : 'Giveaway',
+          company_name: win.type === 'code' ? 'Code' :  win.type === 'nocode' ? 'No Code' : 'Giveaway',
           variation: win.type,
           // @ts-ignore
           'github_handle': req?.auth?.user?.handle?.toLowerCase(),
